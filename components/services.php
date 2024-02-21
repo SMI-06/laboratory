@@ -7,7 +7,7 @@
         </div>
 
         <div class="row">
-            <?php for ($i = 0; $i < 6; $i++) {  ?>
+            <?php for ($i = 0; $i < 3; $i++) {  ?>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-key rounded bg-info">
                         <i class="fas fa-heartbeat"></i>

@@ -9,10 +9,10 @@
                 <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block  nav-item" style="padding-left:16%;">
                     <ul>
                         <li ><a class="text-info navlinks" href="index.php">Home</a></li>
-                        <li><a class="text-info navlinks" href="about_us.html">About Us</a></li>
+                        <li><a class="text-info navlinks" href="">About Us</a></li>
                         <!-- <li><a href="services.html">Services</a></li> -->
-                        <li><a class="text-info navlinks" href="gallery.html">Gallery</a></li>
-                        <li><a class="text-info navlinks" href="contact_us.html">Contact Us</a></li>
+                        <li><a class="text-info navlinks" href="">Gallery</a></li>
+                        <li><a class="text-info navlinks" href="">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-2 col-lg-2 d-none d-lg-block appoint" style="padding-left:10%;">
