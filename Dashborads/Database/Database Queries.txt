@@ -1,0 +1,107 @@
+	 --------------------
+	| Sign Up Table: |
+	 --------------------
+create table signup(
+    id INT(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userName VARCHAR(20) NOT NULL,
+    userEmail VARCHAR(50) NOT NULL UNIQUE,
+    userFullName VARCHAR(50),
+    userimage VARCHAR(50),
+    userCNIC VARCHAR(20) NOT NULL,
+    userPhone VARCHAR(15) NOT NULL,
+    userReligion VARCHAR(20),
+    userGender VARCHAR(10),
+    userCity VARCHAR(30),
+    userCountry VARCHAR(30),
+    userAddress VARCHAR(50),
+    userPassword VARCHAR(70) NOT NULL,
+    Role VARCHAR(15) DEFAULT 'User'
+);
+
+	 ----------------------
+	| Countries Table: |
+	 ----------------------
+
+CREATE table countries(
+id int(5) ZEROFILL PRIMARY KEY AUTO_INCREMENT,
+country_Name varchar(20) UNIQUE,
+regions_id int(5) ZEROFILL,
+FOREIGN KEY(regions_id) REFERENCES regions(id)    
+);
+
+	 ----------------------
+	| Province Table: |
+	 ----------------------
+
+Create table province(
+id int(5) ZEROFILL PRIMARY KEY AUTO_INCREMENT,
+province_Name varchar(30),
+Country_Id int(5) ZEROFILL,
+FOREIGN KEY (Country_Id) REFERENCES countries(id)
+);
+
+
+	 ----------------
+	| CitiesTable: |
+	 ----------------
+
+create TABLE cities(
+id int(5) ZEROFILL PRIMARY KEY AUTO_INCREMENT,
+city_Name varchar(30),
+Province_Id int(5) ZEROFILL,
+FOREIGN KEY (province_Id) REFERENCES province(id), 
+Country_Id int(5) ZEROFILL,
+FOREIGN KEY (Country_Id) REFERENCES countries(id) 
+)
+
+	 --------------------
+	| Regions Table: |
+	 --------------------
+
+CREATE table Regions(
+id int(5) ZEROFILL PRIMARY KEY AUTO_INCREMENT,
+Region_Name varchar(50)    
+)
+
+	 ------------------------------
+	| LaboratoryType Table: |
+	 ------------------------------
+
+create table laboratoryType( 
+id int(5) ZEROFILL AUTO_INCREMENT PRIMARY key, 
+Laboratory_Type varchar(50) 
+);
+
+
+	 ------------------------
+	| Laboratory Table: |
+	 ------------------------
+
+
+create table laboratory(
+laboratory_id int(5) ZEROFILL AUTO_INCREMENT PRIMARY KEY,
+laboratory_name varchar(50) unique,
+laboratory_address varchar(50),
+laboratory_type int(5) ZEROFILL,    
+laboratory_city int(5) ZEROFILL,
+laboratory_country int(5) ZEROFILL,
+FOREIGN KEY(laboratory_type) REFERENCES laboratorytype(laboratorytype_id),
+FOREIGN KEY(laboratory_city) REFERENCES cities(id),
+FOREIGN KEY(laboratory_country) REFERENCES countries(Country_Id)    
+)
+
+
+	 -----------------
+	| Mails Table: |
+	 -----------------
+
+
+create table mails(
+mail_id int(5) ZEROFILL PRIMARY KEY AUTO_INCREMENT,
+recipient  varchar(50),
+subject varchar(50),
+`Message` varchar(255),
+userId int(5) ZEROFILL,
+FOREIGN key (userId) REFERENCES signup(id)    
+)
+
