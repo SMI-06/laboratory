@@ -1,4 +1,14 @@
-<div class="slider-detail">
+<style>
+.heading{
+    color: #2B7DDF;
+}
+.paragraph{
+    color:#5bc0de;
+}
+</style>
+
+
+<div class="slider-detail" style="position: relative; z-index: 2;">
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -10,14 +20,14 @@
             <div class="carousel-item active">
                 <img class="d-block w-100" src="assets/images/slider/slider_1.jpg" alt="First slide">
                 <div class="carousel-caption fvgb d-none d-md-block">
-                    <h5 class="animated bounceInDown">Best Online Laboratory</h5>
-                    <p class="animated bounceInLeft text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, <br>
+                    <h5 class="animated bounceInDown heading">Best Online Laboratory</h5>
+                    <p class="animated bounceInLeft paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, <br>
                         aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis <br>
                         sed sagittis at, sagittis quis neque. Praesent.</p>
 
                     <div class="row vbh">
-
-                        <a href="#" class="btn btn-info animated bounceInUp"> Book an Appointment </a>
+                        <button class="button-87" role="button">Book an Appointment</button>
+                        <!-- <a href="#" class="btn btn-info animated bounceInUp"> Book an Appointment </a> -->
                     </div>
                 </div>
             </div>
@@ -25,14 +35,14 @@
             <div class="carousel-item ">
                 <img class="d-block w-100" src="assets/images/slider/slider_3.jpg" alt="Third slide">
                 <div class="carousel-caption vdg-cur d-none d-md-block">
-                    <h5 class="animated bounceInDown">Best Online Laboratory</h5>
-                    <p class="animated bounceInLeft text-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, <br>
+                    <h5 class="animated bounceInDown heading">Best Online Laboratory</h5>
+                    <p class="animated bounceInLeft paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, <br>
                         aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis <br>
                         sed sagittis at, sagittis quis neque. Praesent.</p>
 
                     <div class="row vbh">
 
-                        <a href="#" class="btn btn-info animated bounceInUp"> Book an Appointment </a>
+                        <button class="button-87" role="button">Book an Appointment</button>
                     </div>
                 </div>
             </div>
