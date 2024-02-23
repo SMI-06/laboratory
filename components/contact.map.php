@@ -1,3 +1,17 @@
+<style>
+    h2{
+        color:#5bc0de;
+    }
+</style>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Location:</h2>
+            <p>Laboratories is headquartered at [MC 1335(A) Green Town, Shah Faisal Colony, Karachi]. <br> Find us on the map and drop by to explore our state-of-the-art facilities.</p>
+        </div>
+    </div>
+</div>
 <div class="container mt-3">
     <div class="row">   
         <div class="col-md-12">

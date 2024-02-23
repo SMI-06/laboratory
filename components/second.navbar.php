@@ -1,4 +1,37 @@
+<style>
+    .button-signin {
+        /* height: 50px; */
+        /* margin-top: 50px; */
+        /* padding: 15px 30px; */
+        width: 150%;
+        text-align: center;
+        text-transform: uppercase;
+        transition: 0.5s;
+        background-size: 200% auto;
+        color: white;
+        border-radius: 10px;
+        display: block;
+        border: 0px;
+        font-weight: 700;
+        box-shadow: 0px 0px 14px -7px #f09819;
+        background-image: linear-gradient(45deg, #2B7DDF 0%, #5bc0de 51%, #2B7DDF 100%);
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
 
+    .button-signin:hover {
+        background-position: right center;
+        /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .button-signin:active {
+        transform: scale(0.95);
+    }
+</style>
     <div id="nav-head" class="header-nav bg-light">
         <div class="container">
             <div class="row">
