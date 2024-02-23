@@ -8,7 +8,7 @@
     }
 </style>
 
-<section class="key-features department">
+<section class="key-features bg-white department">
     <div class="container">
         <div class="inner-title">
 

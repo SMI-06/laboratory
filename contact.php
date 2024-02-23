@@ -12,11 +12,13 @@ $title = "Contact Us";
 <!-- Pagination -->
 <?php require 'components/pagination.php' ?>
 
+<!-- Contact Form -->
+<?php require 'components/contact.form.php' ?>
+
 <!-- Map -->
 <?php require 'components/contact.map.php' ?>
 
-<!-- Contact Form -->
-<?php require 'components/contact.form.php' ?>
+<div class="bg-white" style="height: 30px;"></div>
 
 <!-- Services -->
 <?php require 'components/footer.php' ?>

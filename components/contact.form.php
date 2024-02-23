@@ -21,18 +21,48 @@
         background-color: #2B7DDF;
     }
 
+    .circle {
+        width: 150px;
+        height: 50px;
+        position: relative;
+        top: 20px;
+        left: 40%;
+        z-index: 1;
+        border-radius: 20px;
+        background-image: linear-gradient(45deg, #2B7DDF 0%, #5bc0de 51%, #2B7DDF 100%);
+    }
+
+    .circle>p {
+        position: relative;
+        top: 1px;
+        z-index: 111;
+        left: 20px;
+        color: #000;
+        text-transform: uppercase;
+        font-size: 30px;
+    }
+
     .address {
+        width: 22rem;
         text-align: center;
+        position: relative;
+        left: 27%;
+        /* top: 10px; */
+        border-top-right-radius: 25%;
+        border-bottom-left-radius: 25%;
+        border-bottom-right-radius: 5%;
+        background-image: linear-gradient(45deg, #2B7DDF 0%, #5bc0de 51%, #2B7DDF 100%);
+        box-shadow: -5px 0 10px -1px gray, 10px 0 10px -5px gray;
     }
 
     .address-heading {
-        color: #5bc0de;
+        color: white !important;
         font-size: 22px;
         text-decoration: underline;
     }
 
     .icons {
-        color: #5bc0de;
+        color: white !important;
         margin-right: 5px;
         font-size: 20px;
     }
@@ -97,17 +127,30 @@
                 </form>
             </div>
             <div class="col-md-6">
-                <h3 class="heading">Other Details</h3>
+                <!-- <h3 class="heading">Other Details</h3>
                 <div class="divider-address">
                     <hr>
+                </div> -->
+                <div class="circle">
+                    <p>Details</p>
                 </div>
-                <div class="container overflow-hidden">
+                <div class="container">
                     <div class="row gx-5">
-                        <div class="col address">
+                        <div class="card address">
+                            <div class="card-body ">
+                                <p class="card-text">
+                                <div class="p-3 "><span class="address-heading"> Email</span>: <br> <i class="fas fa-at icons"></i> smi.aptech@gmail.com</div>
+                                <div class="p-3 "><span class="address-heading"> Contact Number</span>: <br><i class="fas fa-mobile-alt icons"></i> +92 333-024-0594 <br> <i class="fas fa-mobile-alt icons"></i> +92 321-024-7722</div>
+                                <div class="p-3 "><span class="address-heading"> Address</span>: <br> <i class="fas fa-map-pin icons"></i> MC 1335(A) Green Town, <br> Shah Faisal Colony, Karachi, Pakistan</div>
+                                </p>
+                                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                            </div>
+                        </div>
+                        <!-- <div class="col address">
                             <div class="p-3 "><span class="address-heading"> Email</span>: <br> <i class="fas fa-at icons"></i> smi.aptech@gmail.com</div>
                             <div class="p-3 "><span class="address-heading"> Contact Number</span>: <br><i class="fas fa-mobile-alt icons"></i> +92 333-024-0594 <br> <i class="fas fa-mobile-alt icons"></i> +92 321-024-7722</div>
                             <div class="p-3 "><span class="address-heading"> Address</span>: <br> <i class="fas fa-map-pin icons"></i> MC 1335(A) Green Town, <br> Shah Faisal Colony, Karachi, Pakistan</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
