@@ -274,9 +274,9 @@
         }
     }
 
-    footer .bottomContainer .social a:hover {
-        /* background-color: var(--secondary-color-dark); */
-    }
+    /* footer .bottomContainer .social a:hover {
+        background-color: var(--secondary-color-dark);
+    } */
 
     @media only screen and (max-width: 768px) {
         header nav::after {
@@ -297,84 +297,132 @@
             display: none;
         }
     }
-        .icons{
-            color: #5bc0de;
-            margin-right: 5px;
+
+    .icons {
+        color: #5bc0de;
+        margin-right: 5px;
     }
 </style>
 
-<footer>
-    <div class="main2 bg-light">
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
     </div>
-    <div class="container py-3">
-        <div class="row">
-        <div class="col-lg-4 col-md-4">
-                <h2 >Useful Links</h2>
-                <div class="links">
-                    <a href="index.php">Home</a>
-                    <a href="#">Gallery</a>
-                    <a href="#">Services</a>
-                    <a href="#">Products</a>
-                    <a href="#">About us</a>
-                    <a href="contact.php">Contact us</a>
-                </div>
-            </div>
-        <div class="col-lg-4 col-md-4">
-                <h2 >About Us</h2>
-                <div class="links">
-                    <a href="#">web development</a>
-                    <a href="#">mobile development</a>
-                    <a href="#">cloud services</a>
-                    <a href="#">networking connectivity</a>
-                    <a href="#">data analytics</a>
-                    <a href="#">software development</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-3">
-                <div class="d-flex flex-column info">
-                    <div class="title">
-                        <span>Contact</span>
-                    </div>
+    <!-- Left -->
 
-                    <div class="d-flex flex-row">
-                        <i class="fas fa-mobile-alt icons"></i><a href="#">+92 333-024-0594</a>
-                    </div>
-                    <div class="d-flex flex-row">
-                        <i class="fas fa-at icons"></i><a href="#">smi.aptech@gmail.com</a>
-                    </div>
-                </div>
-                <br>
-                <div class="d-flex flex-column info">
-                    <div class="title">
-                        <span >Address</span>
-                    </div>
-                    <div class="d-flex flex-row">
-                        <i class="fas fa-map-pin icons"></i> <a href="#">MC 1335(A) Green Town, <br> Shah Faisal Colony, <br> Karachi, Pakistan</a>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="col-lg-3 col-md-3">
-                <h2 >resources</h2>
-                <div class="links">
-                    <a href="#">support area</a>
-                    <a href="#">support policy</a>
-                    <a href="#">terms &amp; conditions</a>
-                    <a href="#">privacy policy</a>
-                    <a href="#">career</a>
-                    <a href="#">pricing plan</a>
-                </div>
-            </div> -->
-        </div>
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
     </div>
-    <div class="main bg-light">
-        <div class="container bottomContainer">
-            <p>©Copyright 2024 <a href="index.html">Laboratory</a> | Design & Developed By SMI SOFTS</p>
-            <!-- <div class="social">
-                    <a href="#" class="shadow"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" class="shadow"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="shadow"><i class="fa-brands fa-pinterest-p"></i></a>
-                    <a href="#" class="shadow"><i class="fa-brands fa-instagram"></i></a>
-                </div> -->
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Company name
+          </h6>
+          <p>
+            Here you can use rows and columns to organize your footer content. Lorem ipsum
+            dolor sit amet, consectetur adipisicing elit.
+          </p>
         </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Angular</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">React</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Vue</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Laravel</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Pricing</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Settings</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Orders</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Help</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
     </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
 </footer>
+<!-- Footer -->

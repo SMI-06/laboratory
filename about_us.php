@@ -12,9 +12,13 @@ $title = "About Us";
 <!-- Pagination -->
 <?php require 'components/pagination.php' ?>
 
+<!-- Main Section -->
+<?php require 'components/main-section.php' ?>
 
+<!-- Main Section -->
+<?php require 'components/team.section.php' ?>
 
-<!-- Services -->
+<!-- Footer -->
 <?php require 'components/footer.php' ?>
 
 <!-- Footer Links -->
