@@ -1,4 +1,4 @@
-<div class="sidebar pe-4 pb-3">
+<div class="sidebar pe-4 pb-3" >
     <nav class="navbar bg-light navbar-light">
         <a href="index.php" class="navbar-brand mx-4 mb-3">
             <h3 class="text-primary"><?php echo $userDetail['Role'] ?></h3>

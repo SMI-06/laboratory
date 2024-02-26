@@ -1,6 +1,6 @@
 <?php 
-require 'includes/header.inc.php';
 $title = "About Us";
+require 'includes/header.inc.php';
 ?>
 
 <!-- First Navbar -->

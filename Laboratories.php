@@ -1,5 +1,5 @@
 <?php 
-$title = "Contact Us";
+$title = "Our Laboratories";
 require 'includes/header.inc.php';
 ?>
 
@@ -12,13 +12,9 @@ require 'includes/header.inc.php';
 <!-- Pagination -->
 <?php require 'components/pagination.php' ?>
 
-<!-- Contact Form -->
-<?php require 'components/contact.form.php' ?>
+<!-- Service Section -->
+<?php require 'components/Laboratories.section.php' ?>
 
-<!-- Map -->
-<?php require 'components/contact.map.php' ?>
-
-<div class="bg-white" style="height: 30px;"></div>
 
 <!-- Services -->
 <?php require 'components/footer.php' ?>

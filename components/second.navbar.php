@@ -32,29 +32,48 @@
         transform: scale(0.95);
     }
 </style>
-    <div id="nav-head" class="header-nav bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
-                    <img src="assets/images/logo.png" alt="">   
-                    <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
-                </div>
-                <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block  nav-item" style="padding-left:9%;">
-                    <ul>
-                        <li ><a class="text-info navlinks" href="index.php">Home</a></li>
-                        <li><a class="text-info navlinks" href="about_us.php">About Us</a></li>
-                        <li><a class="text-info navlinks" href="services.html">Products</a></li>
-                        <li><a class="text-info navlinks" href="services.html">Services</a></li>
-                        <li><a class="text-info navlinks" href="">Gallery</a></li>
-                        <li><a class="text-info navlinks" href="contact.php">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-2 col-lg-2 d-none d-lg-block appoint" style="padding-left:10%;">
-                    <a href="Dashborads/login.php" class="button-signin btn">Sign In</a>
-                </div>
+<div id="nav-head" class="header-nav bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+                <img src="assets/images/logo.png" alt="">
+                <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
             </div>
-
+            <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block  nav-item" style="padding-left:8.9%;">
+                <ul>
+                    <li><a class="text-info navlinks" href="index.php">Home</a></li>
+                    <li><a class="text-info navlinks" href="about_us.php">About Us</a></li>
+                    <li><a class="text-info navlinks" href="#">Products</a></li>
+                    <li><a class="text-info navlinks" href="Laboratories.php">Laboratories</a></li>
+                    <li><a class="text-info navlinks" href="#">Gallery</a></li>
+                    <li><a class="text-info navlinks" href="contact.php">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-2 col-lg-2 d-none d-lg-block appoint" style="padding-left:10%;">
+                <?php
+                if (isset($_SESSION['userDetails'])) {
+                    $userdetails = $_SESSION['userDetails'];
+                }
+                if (isset($userdetails)) { ?>
+                    <div class="dropdown">
+                        <button class="button-signin btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Welcome
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="Dashborads/">Dashboard</a>
+                            <a class="dropdown-item" href="Dashborads/profile.php">Profile</a>
+                            <a class="dropdown-item" href="Dashborads/auth/auth.logout.php">Logout</a>
+                            <!-- Add more dropdown items as needed -->
+                        </div>
+                    </div>
+                <?php } else { ?>
+                    <a href="Dashborads/login.php" class="button-signin btn">Sign In</a>
+                <?php }
+                ?>
+            </div>
         </div>
+
     </div>
+</div>
 
 </header>

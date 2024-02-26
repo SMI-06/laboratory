@@ -19,39 +19,15 @@ $title = "Lab Automation | Dashboard"
 <!-- Sidebar End -->
 
 
-<section class="bg-light" style=" border-radius:10px; padding:5px; margin:10px 22px">
+<section class="main-section">
 
     <?php
     if ($userDetail['Role'] == "Super Admin") { ?>
-
-        <div class="card bg-danger shadow-none position-relative overflow-hidden mb-4">
-            <div class="card-body px-4 py-3">
-                <div class="row align-items-center">
-                    <div class="col-9">
-                        <h4 class="fw-semibold mb-8">WELCOME <?php echo $userDetail['userName'] ?></h4>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a class="text-muted text-decoration-none" href="index.php">Home</a>
-                                </li>
-                                <li class="breadcrumb-item" aria-current="page">Products</li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <div class="col-3">
-                        <div class="text-center mb-n5">
-                            <img src="assets/images/breadcrumb/ChatBc.png" alt="" class="img-fluid mb-n4">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="container-fluid px-4">
             <div class="row g-4">
                 <div class="col-sm-6 col-xl-3">
                     <a href="users.all.php">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="shadow rounded d-flex align-items-center justify-content-between p-4 mycard">
                             <i class="fa fa-user fa-3x text-dark"></i>
                             <div class="ms-3">
                                 <p class="mb-2 text-dark">All Users</p>
@@ -66,7 +42,7 @@ $title = "Lab Automation | Dashboard"
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <a href="admin.all.php">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-user-tie fa-3x text-dark"></i>
                             <div class="ms-3">
                                 <p class="mb-2 text-dark">Admins</p>
@@ -86,7 +62,7 @@ $title = "Lab Automation | Dashboard"
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <a href="tester.all.php">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-microscope fa-3x text-dark"></i>
                             <div class="ms-3">
                                 <p class="mb-2 text-dark">Testers</p>
@@ -97,7 +73,7 @@ $title = "Lab Automation | Dashboard"
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <a href="user.all.php">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-users fa-3x text-dark"></i>
                             <!-- <i class="fa-solid fa-users-line"></i> -->
                             <div class="ms-3 text-dark">
@@ -111,7 +87,7 @@ $title = "Lab Automation | Dashboard"
             <div class="row g-4 mt-2">
 
                 <div class="col-sm-6 col-xl-3">
-                    <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                    <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                         <i class="fa fa-laptop-medical fa-3x text-dark"></i>
                         <div class="ms-3 text-dark">
                             <p class="mb-2" style="white-space: nowrap !important;">All Laboratories</p>
@@ -124,7 +100,7 @@ $title = "Lab Automation | Dashboard"
                     </div>
                 </div>
                 <div class="col-sm-6 col-xl-3">
-                    <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                    <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                         <i class="fa fa-check fa-3x text-dark"></i>
                         <!-- <i class="fa-solid fa-check-to-slot"></i> -->
                         <div class="ms-3 text-dark">
@@ -135,10 +111,10 @@ $title = "Lab Automation | Dashboard"
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <a href="#">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-hourglass-half fa-3x text-dark"></i>
                             <div class="ms-3 text-dark">
-                                <p class="mb-2">Pending Accounts</p>
+                                <p class="mb-2" style="white-space: nowrap !important;">Pending Accounts</p>
                                 <h6 class="mb-0"><?php echo $row['pending_account'] ?></h6>
                             </div>
                         </div>
@@ -149,7 +125,7 @@ $title = "Lab Automation | Dashboard"
     <?php }
     //  Admin Dashborad
     else if ($userDetail['Role'] == "Admin") { ?>
-        <div class="card bg-info shadow-none position-relative overflow-hidden mx-4 my-4">
+        <div class="card mycard shadow-none position-relative overflow-hidden mx-4 my-4">
             <div class="card-body px-4 py-3">
                 <div class="row align-items-center">
                     <div class="col-9">
@@ -187,7 +163,7 @@ $title = "Lab Automation | Dashboard"
             <div class="row g-4">
                 <div class="col-sm-6 col-xl-3">
                     <a href="users.all.php">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-user fa-3x text-dark"></i>
                             <div class="ms-3">
                                 <p class="mb-2 text-dark">All Users</p>
@@ -205,7 +181,7 @@ $title = "Lab Automation | Dashboard"
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <a href="tester.all.php">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-microscope fa-3x text-dark"></i>
                             <div class="ms-3">
                                 <p class="mb-2 text-dark">Testers</p>
@@ -216,7 +192,7 @@ $title = "Lab Automation | Dashboard"
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <a href="user.all.php">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-users fa-3x text-dark"></i>
                             <!-- <i class="fa-solid fa-users-line"></i> -->
                             <div class="ms-3 text-dark">
@@ -229,7 +205,7 @@ $title = "Lab Automation | Dashboard"
             </div>
             <div class="row g-4 mt-2">
                 <div class="col-sm-6 col-xl-3">
-                    <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                    <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                         <i class="fa fa-check fa-3x text-dark"></i>
                         <!-- <i class="fa-solid fa-check-to-slot"></i> -->
                         <div class="ms-3 text-dark">
@@ -247,7 +223,7 @@ $title = "Lab Automation | Dashboard"
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <a href="#">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-hourglass-half fa-3x text-dark"></i>
                             <div class="ms-3 text-dark">
                                 <p class="mb-2">Pending Accounts</p>
@@ -274,7 +250,7 @@ $title = "Lab Automation | Dashboard"
             <div class="row g-4">
                 <div class="col-sm-6 col-xl-3">
                     <a href="users.all.php">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-user fa-3x text-dark"></i>
                             <div class="ms-3">
                                 <p class="mb-2">All Users</p>
@@ -292,7 +268,7 @@ $title = "Lab Automation | Dashboard"
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <a href="admin.all.php">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-user-tie fa-3x text-dark"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Admins</p>
@@ -310,7 +286,7 @@ $title = "Lab Automation | Dashboard"
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <a href="tester.all.php">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-microscope fa-3x text-dark"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Testers</p>
@@ -328,7 +304,7 @@ $title = "Lab Automation | Dashboard"
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <a href="user.all.php">
-                        <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-users fa-3x text-dark"></i>
                             <!-- <i class="fa-solid fa-users-line"></i> -->
                             <div class="ms-3 text-dark">
@@ -348,7 +324,7 @@ $title = "Lab Automation | Dashboard"
             </div>
             <div class="row g-4 mt-2">
                 <div class="col-sm-6 col-xl-3">
-                    <div class="bg-info shadow rounded d-flex align-items-center justify-content-between p-4">
+                    <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                         <i class="fa fa-laptop-medical fa-3x text-dark"></i>
                         <div class="ms-3 text-dark">
                             <p class="mb-2" style="white-space: nowrap !important;">All Laboratories</p>
@@ -357,7 +333,7 @@ $title = "Lab Automation | Dashboard"
                     </div>
                 </div>
                 <div class="col-sm-6 col-xl-3">
-                    <div class="bg-info rounded d-flex align-items-center justify-content-between p-4">
+                    <div class="mycard rounded d-flex align-items-center justify-content-between p-4">
                         <i class="fa fa-check fa-3x text-dark"></i>
                         <!-- <i class="fa-solid fa-check-to-slot"></i> -->
                         <div class="ms-3 text-dark">
@@ -375,7 +351,7 @@ $title = "Lab Automation | Dashboard"
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <a href="#">
-                        <div class="bg-info rounded d-flex align-items-center justify-content-between p-4">
+                        <div class="mycard rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-hourglass-half fa-3x text-dark"></i>
                             <div class="ms-3 text-dark">
                                 <p class="mb-2">Pending Accounts</p>

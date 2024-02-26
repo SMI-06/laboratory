@@ -10,9 +10,9 @@
                 </div>
                 <div class="col-lg-5 d-none d-lg-block right-item">
                     <ul>
-                        <li><a><i class="fab fa-github navicon text-black"></i></a></li>
-                        <li><a><i class="fab fa-twitter navicon text-black"></i></a></li>
-                        <li> <a><i class="fab fa-facebook-f navicon text-black"></i></a></li>
+                        <li><a><i class="fab fa-github navicon"></i></a></li>
+                        <li><a><i class="fab fa-twitter navicon"></i></a></li>
+                        <li> <a><i class="fab fa-facebook-f navicon"></i></a></li>
                     </ul>
                 </div>
             </div>

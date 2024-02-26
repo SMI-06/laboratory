@@ -91,6 +91,18 @@
         font-size: 12px;
     }
 
+.main-section{
+    border-radius:10px; 
+    padding:20px; 
+    margin:10px 22px;
+    background-color: #fff;
+}
+    .mycard{
+        background-image: linear-gradient(45deg, #2B7DDF 0%, #5bc0de 51%, #2B7DDF 100%);
+        position: relative;
+        top: 10px;
+    }
+
 </style>
 
 </head>

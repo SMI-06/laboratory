@@ -1,4 +1,6 @@
-<?php require 'includes/header.inc.php' ?>
+<?php 
+$title = "Home";
+require 'includes/header.inc.php' ?>
 
 <!-- First Navbar -->
 <?php require 'components/first.navbar.php' ?>
