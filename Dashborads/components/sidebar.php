@@ -93,15 +93,16 @@
                         <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-pager me-2"></i>Product</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="product.php?id=productAdd" class="dropdown-item">Add Product For Test</a>
+                            <a href="product.php?id=productshow" class="dropdown-item">Show Product</a>
                             <!-- <a href="request.php?id=another" class="dropdown-item">Request For Another</a> -->
                         </div>
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-pager me-2"></i>Status</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="product.php?id=productStatus" class="dropdown-item">Product Status</a>
-                            <a href="product.php?id=productFailed" class="dropdown-item">Failed Products</a>
-                            <a href="product.php?id=productPass" class="dropdown-item">Pass Products</a>
+                            <a href="status.product.php?id=productPending" class="dropdown-item">Product Status</a>
+                            <a href="status.product.php?id=productFailed" class="dropdown-item">Failed Products</a>
+                            <a href="status.product.php?id=productPass" class="dropdown-item">Pass Products</a>
                             <!-- <a href="request.php?id=another" class="dropdown-item">Request For Another</a> -->
                         </div>
                     </div>

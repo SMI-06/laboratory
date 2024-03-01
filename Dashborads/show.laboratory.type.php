@@ -25,7 +25,7 @@ $title = "Lab Automation | All Tester"
         if ($_GET['id'] == "laboratoryType") { ?>
             <h3 class="text-dark text-center text-uppercase">All Laboratory Type</h3>
             <div class="col-sm-12 col-xl-12">
-                <div class=" rounded h-100 p-4 table-scrollable" style="overflow-x: scroll;">
+                <div class=" rounded h-100 p-4 table-scrollable">
                     <table class="table table-hover table-bordered text-dark text-center" style="width:100%;">
                         <thead>
                             <tr>

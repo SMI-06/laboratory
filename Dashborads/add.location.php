@@ -54,7 +54,7 @@ $title = "Lab Automation | Profile | Update"
                                             $query = mysqli_query($conn, "Select * from province");
                                             if (mysqli_num_rows($query) > 0) {
                                                 while ($row = mysqli_fetch_assoc($query)) { ?>
-                                                    <option value="<?php echo $row['id'] ?>">
+                                                    <option value="<?php echo $row['province_Id'] ?>">
                                                         <?php echo $row['province_Name'] ?>
                                                     </option>
                                             <?php }
@@ -76,7 +76,7 @@ $title = "Lab Automation | Profile | Update"
                                                 $query = mysqli_query($conn, "Select * from countries");
                                                 if (mysqli_num_rows($query) > 0) {
                                                     while ($row = mysqli_fetch_assoc($query)) { ?>
-                                                        <option value="<?php echo $row['id'] ?>">
+                                                        <option value="<?php echo $row['Country_Id'] ?>">
                                                             <?php echo $row['country_Name'] ?>
                                                         </option>
                                                 <?php }
@@ -185,7 +185,7 @@ $title = "Lab Automation | Profile | Update"
                                                 $query = mysqli_query($conn, "Select * from countries");
                                                 if (mysqli_num_rows($query) > 0) {
                                                     while ($row = mysqli_fetch_assoc($query)) { ?>
-                                                        <option value="<?php echo $row['id'] ?>">
+                                                        <option value="<?php echo $row['Country_Id'] ?>">
                                                             <?php echo $row['country_Name'] ?>
                                                         </option>
                                                 <?php }

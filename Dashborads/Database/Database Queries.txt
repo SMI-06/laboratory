@@ -105,3 +105,43 @@ userId int(5) ZEROFILL,
 FOREIGN key (userId) REFERENCES signup(id)    
 )
 
+
+	 --------------------
+	| Product Table: |
+	 ---------------------
+
+
+
+CREATE TABLE products (
+    id INT(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    productName VARCHAR(30),
+    productCategory VARCHAR(30),
+    productDescription VARCHAR(255) NOT NULL,
+    productPrice VARCHAR(30),
+    productImage VARCHAR(50),
+    user_id int(5) ZEROFILL,
+    FOREIGN KEY(user_id) REFERENCES signup(id),
+    `status` varchar(20) DEFAULT "Pending"
+);
+
+	 -------------------------------
+	| Testing_product Table: |
+	 -------------------------------
+
+
+
+create table testing_product(
+id int(5) ZEROFILL AUTO_INCREMENT PRIMARY KEY,
+productName varchar(25),
+productCetagory varchar(25),
+productdescription varchar(25),
+productImage varchar(30),
+productPrice varchar(30),
+laboratoryType int(5) ZEROFILL,
+FOREIGN KEY(laboratoryType) REFERENCES laboratorytype(laboratorytype_id),
+laboratory int(5) ZEROFILL,
+FOREIGN KEY(laboratory) REFERENCES laboratory(laboratory_id),
+user_id int(5) ZEROFILL,
+FOREIGN KEY(user_id) REFERENCES signup(id),
+`status` varchar(20) DEFAULT "Pending"
+)

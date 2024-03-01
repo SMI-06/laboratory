@@ -66,7 +66,7 @@ $title = "Lab Automation | All Tester"
         ?>
             <h3 class="text-dark text-center text-uppercase">All City</h3>
             <div class="col-sm-12 col-xl-12">
-                <div class=" rounded h-100 p-4 table-scrollable" style="overflow-x: scroll;">
+                <div class=" rounded h-100 p-4 table-scrollable">
                     <table class="table table-hover table-bordered text-dark text-center" style="width:100%;">
                         <thead>
                             <tr>
@@ -109,7 +109,7 @@ $title = "Lab Automation | All Tester"
         <?php } elseif ($_GET['id'] == "province") { ?>
             <h3 class="text-dark text-center text-uppercase">All Province</h3>
             <div class="col-sm-12 col-xl-12">
-                <div class=" rounded h-100 p-4 table-scrollable" style="overflow-x: scroll;">
+                <div class=" rounded h-100 p-4 table-scrollable">
                     <table class="table table-hover table-bordered text-dark text-center" style="width:100%;">
                         <thead>
                             <tr>
@@ -152,7 +152,7 @@ $title = "Lab Automation | All Tester"
         <?php } elseif ($_GET['id'] == "country") { ?>
             <h3 class="text-dark text-center text-uppercase">All Country</h3>
             <div class="col-sm-12 col-xl-12">
-                <div class=" rounded h-100 p-4 table-scrollable" style="overflow-x: scroll;">
+                <div class=" rounded h-100 p-4 table-scrollable">
                     <table class="table table-hover table-bordered text-dark text-center" style="width:100%;">
                         <thead>
                             <tr>
