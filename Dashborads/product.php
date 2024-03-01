@@ -25,10 +25,10 @@ $title = "Lab Automation | Profile | Update"
 <section class="section-back">
     <!-- City -->
     <?php
-    if ($_GET['id'] == "city") { ?>
-        <h3 class="text-dark text-center" style="margin-top: 20px; margin-left:20px; text-transform:uppercase">Add City</h3>
+    if ($_GET['id'] == "productAdd") { ?>
+        <h3 class="text-dark text-center" style="margin-top: 20px; margin-left:20px; text-transform:uppercase">Add Product For Test</h3>
         <!-- <div > -->
-        <form action="logics/logic.location.php" method="post" enctype="multipart/form-data">
+        <form action="logics/logic.product_test.php" method="post" enctype="multipart/form-data">
             <div class="container py-4">
                 <div class="row">
                     <div class="col-lg-12">
@@ -36,29 +36,71 @@ $title = "Lab Automation | Profile | Update"
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <label class="mt-2" for="Cityname">City Name</label>
+                                        <label class="mt-2" for="Productname">Product Name</label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="Cityname" placeholder="Enter City Name" id="Cityname">
+                                        <input type="text" class="form-control" name="Productname" placeholder="Enter Product Name" id="Productname">
+                                    </div>
+                                </div>
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="mt-2" for="ProductImage">Product Image</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="col-sm-12">
+                                            <input type="file" class="form-control" name="ProductImage" id="ProductImage">
+                                        </div>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <label class="mt-2" for="Province">Province</label>
+                                        <label class="mt-2" for="ProductCategory">Product Category</label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <select class="form-select" name="Province" id="Province" aria-label="Floating label select example">
-                                            <option selected hidden disabled>Select Province</option>
+                                        <select class="form-select" name="ProductCategory" id="ProductCategory" aria-label="Floating label select example">
+                                            <option selected hidden disabled>Select Product Category</option>
+                                            <option>Electrical Category</option>
+                                            <option>Medical Category</option>
+                                            <option>Other Category</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="mt-2" for="ProductDescription">Product Description</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <textarea type="text" class="form-control" name="ProductDescription" id="ProductDescription" placeholder="Product Description" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="mt-2" for="ProductPrice">Product Price</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="col-sm-12">
+                                            <input type="text" class="form-control" name="ProductPrice" placeholder="Enter Product Price" id="ProductPrice">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="mt-2" for="laboratorytype">Laboratory Type</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <select class="form-select" name="laboratorytype" id="laboratorytype" aria-label="Floating label select example">
+                                            <option selected hidden disabled>Select Laboratory Type</option>
                                             <?php
-                                            $query = mysqli_query($conn, "Select * from province");
-                                            if (mysqli_num_rows($query) > 0) {
-                                                while ($row = mysqli_fetch_assoc($query)) { ?>
-                                                    <option value="<?php echo $row['id'] ?>">
-                                                        <?php echo $row['province_Name'] ?>
-                                                    </option>
+                                            $select_Lab_type = mysqli_query($conn, "SELECT laboratory.laboratory_type FROM `laboratorytype` JOIN laboratory on laboratory.laboratory_type = laboratorytype.laboratorytype_id;");
+                                                while ($row = mysqli_fetch_assoc($select_Lab_type)) { ?>
+                                                    <option><?php echo $row['laboratory_type'] ?></option>
                                             <?php }
-                                            }
                                             ?>
                                         </select>
                                     </div>
@@ -66,30 +108,24 @@ $title = "Lab Automation | Profile | Update"
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <label class="mt-2" for="Country">Country</label>
+                                        <label class="mt-2" for="Laboratory">Laboratory</label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <div class="col-sm-12">
-                                            <select class="form-select" name="Country" id="Country" aria-label="Floating label select example">
-                                                <option selected hidden disabled>Select Country</option>
-                                                <?php
-                                                $query = mysqli_query($conn, "Select * from countries");
-                                                if (mysqli_num_rows($query) > 0) {
-                                                    while ($row = mysqli_fetch_assoc($query)) { ?>
-                                                        <option value="<?php echo $row['id'] ?>">
-                                                            <?php echo $row['country_Name'] ?>
-                                                        </option>
-                                                <?php }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
+                                        <select class="form-select" name="Laboratory" id="Laboratory" aria-label="Floating label select example">
+                                            <option selected hidden disabled>Select Laboratory</option>
+                                            <?php
+                                            $select_Lab = mysqli_query($conn, "SELECT laboratory_name FROM `laboratory`;");
+                                                while ($row = mysqli_fetch_assoc($select_Lab)) { ?>
+                                                    <option><?php echo $row['laboratory_name'] ?></option>
+                                            <?php }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-12 text-center">
-                                        <input type="submit" value="Add City" name="add_city" class="btn btn-outline-dark rounded-pill">
+                                        <input type="submit" value="Add Product" name="add_product" class="btn btn-outline-dark rounded-pill">
                                     </div>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
-<div class="sidebar pe-4 pb-3" >
+<div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-light navbar-light">
-        <a href="index.php" class="navbar-brand mx-4 mb-3">
-            <h3 class="text-primary"><?php echo $userDetail['Role'] ?></h3>
+        <a href="index.php" class="navbar-brand mx-4 mb-3 d-block">
+            <h1><img src="assets/img/sidebar.png" width="100%" style="position: relative;" alt="logo" class="logo"></h1>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
             <div class="position-relative">
@@ -25,18 +25,6 @@
         </div>
         <div class="navbar-nav w-100">
             <a href="index.php" class="nav-item nav-link "><i class="fa fa-home me-2"></i>Home</a>
-            <!-- <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Buttons</a>
-                            <a href="typography.html" class="dropdown-item">Typography</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a>
-                        </div>
-                    </div> -->
-            <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a> -->
-            <!-- <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a> -->
-            <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a> -->
-            <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> -->
             <div class="nav-item dropdown">
                 <?php
                 // ADMIN
@@ -98,7 +86,35 @@
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php }
+                // User 
+                elseif ($userDetail['Role'] == "User") { ?>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-pager me-2"></i>Product</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="product.php?id=productAdd" class="dropdown-item">Add Product For Test</a>
+                            <!-- <a href="request.php?id=another" class="dropdown-item">Request For Another</a> -->
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-pager me-2"></i>Status</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="product.php?id=productStatus" class="dropdown-item">Product Status</a>
+                            <a href="product.php?id=productFailed" class="dropdown-item">Failed Products</a>
+                            <a href="product.php?id=productPass" class="dropdown-item">Pass Products</a>
+                            <!-- <a href="request.php?id=another" class="dropdown-item">Request For Another</a> -->
+                        </div>
+                    </div>
+                    <!-- <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-paper-plane"></i>Mail</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="mail.php" class="dropdown-item">Send Mail</a>
+                            <a href="mail.php?show_mail_id=show_mail" class="dropdown-item">Sent Mail</a>
+                            <a href="mail.php?show_mail_id=show_mail" class="dropdown-item">Show Mails</a>
+                        </div>
+                    </div> -->
+                <?php  }
+                ?>
             </div>
         </div>
     </nav>

@@ -39,11 +39,11 @@ if (isset($_REQUEST['signup'])) {
                         'Role' => $row['Role'],
                     ];
                     $_SESSION["loginStatus"] = true;
-                    header("location:../index.php");
+                    header("location:../../index.php");
                     $insert = "INSERT INTO `signup`(`userName`, `userEmail`,`userPassword`, `Role`,`Status`) VALUES ('$userName','$userEmail','$userPassword','$userRole','Pending')";
                     $res = mysqli_query($conn, $insert);
                     echo "<script>alert('Sign Up Successful')
-                    location.href = '../index.php';
+                    location.href = '../../index.php';
                     </script>";
                 } else {
                     echo "<script>alert('Password Must Be At Least 8 Characters')
@@ -61,11 +61,11 @@ if (isset($_REQUEST['signup'])) {
                     'Role' => $row['Role'],
                 ];
                 $_SESSION["loginStatus"] = true;
-                header("location:../index.php");
+                header("location:'../../index.php");
                 $insert = "INSERT INTO `signup`(`userName`, `userEmail`,`userPassword`, `Role`,`Status`) VALUES ('$userName','$userEmail','$userPassword','$userRole','Pending')";
                 $res = mysqli_query($conn, $insert);
                 echo "<script>alert('Sign Up Successful')
-                location.href = '../index.php';
+                location.href = '../../index.php';
                 </script>";
             } else {
                 echo "<script>alert('Password Must Be At Least 8 Characters')
@@ -77,7 +77,7 @@ if (isset($_REQUEST['signup'])) {
 }
 
 
-// Login Auth
+///////////////////////////// Login Auth
 
 if (isset($_REQUEST['signIn'])) {
     $userEmail = $_REQUEST['userEmail'];
@@ -104,7 +104,7 @@ if (isset($_REQUEST['signIn'])) {
                                 'Role' => $row['Role'],
                             ];
                             $_SESSION["loginStatus"] = true;
-                            header("location:../index.php");
+                            header("location:../../index.php");
                         } else {
 
                             echo "Password Wrong";
@@ -123,7 +123,7 @@ if (isset($_REQUEST['signIn'])) {
                                 'Role' => $row['Role'],
                             ];
                             $_SESSION["loginStatus"] = true;
-                            header("location:../index.php");
+                            header("location:../../index.php");
                         } else {
 
                             echo "Password Wrong";
@@ -142,7 +142,7 @@ if (isset($_REQUEST['signIn'])) {
                                 'Role' => $row['Role'],
                             ];
                             $_SESSION["loginStatus"] = true;
-                            header("location:../index.php");
+                            header("location: ../../index.php ");
                         } else {
                             header("location:../login.php");
                             echo "Password Wrong";
@@ -162,7 +162,7 @@ if (isset($_REQUEST['signIn'])) {
                                 'Role' => $row['Role'],
                             ];
                             $_SESSION["loginStatus"] = true;
-                            header("location:../index.php");
+                            header("location:../../index.php");
                         } else {
                             header("location:../login.php");
                             echo "Password Wrong";

@@ -18,15 +18,15 @@ $title = "Lab Automation | All Tester"
 <?php require("components/sidebar.php"); ?>
 <!-- Sidebar End -->
 
-<section class="bg-light" style=" border-radius:10px; padding:5px; margin:10px 22px">
+<section class="section-back">
     <div class="container-fluid pt-4 px-4">
 
         <?php
         if ($_GET['id'] == "region") { ?>
             <h3 class="text-dark text-center text-uppercase">All Region</h3>
             <div class="col-sm-12 col-xl-12">
-                <div class=" rounded h-100 p-4 table-scrollable" style="overflow-x: scroll;">
-                    <table class="table table-hover table-bordered text-center" style="width:100%;">
+                <div class=" rounded h-100 p-4 table-scrollable">
+                    <table class="table table-hover table-bordered text-dark text-center" style="width:100%;">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -67,7 +67,7 @@ $title = "Lab Automation | All Tester"
             <h3 class="text-dark text-center text-uppercase">All City</h3>
             <div class="col-sm-12 col-xl-12">
                 <div class=" rounded h-100 p-4 table-scrollable" style="overflow-x: scroll;">
-                    <table class="table table-hover table-bordered text-center" style="width:100%;">
+                    <table class="table table-hover table-bordered text-dark text-center" style="width:100%;">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -110,7 +110,7 @@ $title = "Lab Automation | All Tester"
             <h3 class="text-dark text-center text-uppercase">All Province</h3>
             <div class="col-sm-12 col-xl-12">
                 <div class=" rounded h-100 p-4 table-scrollable" style="overflow-x: scroll;">
-                    <table class="table table-hover table-bordered text-center" style="width:100%;">
+                    <table class="table table-hover table-bordered text-dark text-center" style="width:100%;">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -153,7 +153,7 @@ $title = "Lab Automation | All Tester"
             <h3 class="text-dark text-center text-uppercase">All Country</h3>
             <div class="col-sm-12 col-xl-12">
                 <div class=" rounded h-100 p-4 table-scrollable" style="overflow-x: scroll;">
-                    <table class="table table-hover table-bordered text-center" style="width:100%;">
+                    <table class="table table-hover table-bordered text-dark text-center" style="width:100%;">
                         <thead>
                             <tr>
                                 <th>Id</th>

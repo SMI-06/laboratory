@@ -49,7 +49,8 @@
                     <li><a class="text-info navlinks" href="contact.php">Contact Us</a></li>
                 </ul>
             </div>
-            <div class="col-sm-2 col-lg-2 d-none d-lg-block appoint" style="padding-left:10%;">
+            <div class="col-sm-2 col-lg-2 d-none d-lg-block appoint" style="padding-left:10%;
+            ">
                 <?php
                 if (isset($_SESSION['userDetails'])) {
                     $userdetails = $_SESSION['userDetails'];
@@ -57,7 +58,7 @@
                 if (isset($userdetails)) { ?>
                     <div class="dropdown">
                         <button class="button-signin btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Welcome
+                        <?php echo $userdetails['userName'] ?>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="Dashborads/">Dashboard</a>

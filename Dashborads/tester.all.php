@@ -41,68 +41,68 @@ $title = "Lab Automation | All Tester"
     }
 </style>
 
+<section class="section-back">
+    <div class="container-fluid pt-4 px-4">
+        <h3 class="text-dark text-center text-uppercase">All Testers</h3>
+        <div class="col-sm-12 col-xl-12">
+            <div class=" h-100 p-4 table-scrollable" style="overflow-x: scroll;">
+                <table class="table table-hover text-dark table-bordered text-center" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <?php
+                            $selectColumn = "SELECT * FROM signup";
+                            $res = mysqli_query($conn, $selectColumn);
+                            if (mysqli_num_rows($res) > 0) {
+                                $row = mysqli_fetch_assoc($res);
+                                foreach ($row as $Column => $value) { ?>
+                                    <th><?php echo $Column ?></th>
+                                <?php }  ?>
+                                <th colspan="2" class="text-center">Action</th>
+                            <?php }
+                            ?>
+                        </tr>
 
-<div class="container-fluid pt-4 px-4">
-    <h3 class="text-dark text-center text-uppercase">All Testers</h3>
-    <div class="col-sm-12 col-xl-12">
-        <div class="bg-light rounded h-100 p-4 table-scrollable" style="overflow-x: scroll;">
-            <table class="table table-hover" style="width:100%;">
-                <thead>
-                    <tr>
+                    </thead>
+                    <tbody>
+
                         <?php
-                        $selectColumn = "SELECT * FROM signup";
-                        $res = mysqli_query($conn, $selectColumn);
-                        if (mysqli_num_rows($res) > 0) {
-                            $row = mysqli_fetch_assoc($res);
-                            foreach ($row as $Column => $value) { ?>
-                                <th><?php echo $Column ?></th>
-                            <?php }  ?>
-                            <th colspan="2" class="text-center">Action</th>
+                        $select = "SELECT * FROM `signup` where Role = 'Tester'";
+                        $res = mysqli_query($conn, $select);
+                        if (mysqli_num_rows($res)) {
+                            while ($row = mysqli_fetch_assoc($res)) { ?>
+                                <tr>
+                                    <th><?php echo $row['id'] ?></th>
+                                    <td><?php echo $row['userName'] ?></td>
+                                    <td><?php echo $row['userEmail'] ?></td>
+                                    <td><?php echo $row['userFullName'] ?></td>
+                                    <td><img src="assets/img/UserImages/<?php echo $row['userimage'] ?>" width="50px" height="50px" class="rounded-circle" alt="">
+                                    </td>
+                                    <td><?php echo $row['userCNIC'] ?></td>
+                                    <td><?php echo $row['userPhone'] ?></td>
+                                    <td><?php echo $row['userReligion'] ?></td>
+                                    <td><?php echo $row['userGender'] ?></td>
+                                    <td><?php echo $row['userCity'] ?></td>
+                                    <td><?php echo $row['userCountry'] ?></td>
+                                    <td><?php echo $row['userAddress'] ?></td>
+                                    <td><?php echo $row['userPassword'] ?></td>
+                                    <td><?php echo $row['Role'] ?></td>
+                                    <td><?php echo $row['Status'] ?></td>
+                                    <td><a href="user.edit.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-dark rounded-pill"><i class="fas fa-user-edit"></i></a></td>
+                                    <td><a class="btn btn-outline-danger rounded-pill"><i class="far fa-trash-alt"></i></a></td>
+                                </tr>
+                            <?php }
+                        } else { ?>
+                            <td colspan="17" class="text-center"><i class="far fa-times-circle fa-3x"></i>
+                                <h4>No Record Found</h4>
+                            </td>
                         <?php }
                         ?>
-                    </tr>
-
-                </thead>
-                <tbody>
-
-                    <?php
-                    $select = "SELECT * FROM `signup` where Role = 'Tester'";
-                    $res = mysqli_query($conn, $select);
-                    if (mysqli_num_rows($res)) {
-                        while ($row = mysqli_fetch_assoc($res)) { ?>
-                            <tr>
-                                <th><?php echo $row['id'] ?></th>
-                                <td><?php echo $row['userName'] ?></td>
-                                <td><?php echo $row['userEmail'] ?></td>
-                                <td><?php echo $row['userFullName'] ?></td>
-                                <td><img src="assets/img/UserImages/<?php echo $row['userimage'] ?>" width="50px" height="50px" class="rounded-circle" alt="">
-                                </td>
-                                <td><?php echo $row['userCNIC'] ?></td>
-                                <td><?php echo $row['userPhone'] ?></td>
-                                <td><?php echo $row['userReligion'] ?></td>
-                                <td><?php echo $row['userGender'] ?></td>
-                                <td><?php echo $row['userCity'] ?></td>
-                                <td><?php echo $row['userCountry'] ?></td>
-                                <td><?php echo $row['userAddress'] ?></td>
-                                <td><?php echo $row['userPassword'] ?></td>
-                                <td><?php echo $row['Role'] ?></td>
-                                <td><?php echo $row['Status'] ?></td>
-                                <td><a href="user.edit.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-dark rounded-pill"><i class="fas fa-user-edit"></i></a></td>
-                                <td><a class="btn btn-outline-danger rounded-pill"><i class="far fa-trash-alt"></i></a></td>
-                            </tr>
-                        <?php }
-                    } else { ?>
-                        <td colspan="17" class="text-center"><i class="far fa-times-circle fa-3x"></i>
-                            <h4>No Record Found</h4>
-                        </td>
-                    <?php }
-                    ?>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-
+</section>
 <!-- Footer Start -->
 <?php require("components/footer.php"); ?>
 <!-- Footer End -->

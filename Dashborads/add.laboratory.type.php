@@ -18,7 +18,7 @@ $title = "Lab Automation | Profile | Update"
 <?php require("components/sidebar.php"); ?>
 <!-- Sidebar End -->
 
-<section class="bg-light" style=" border-radius:10px; padding:5px; margin:10px 22px">
+<section class="section-back">
     <?php
     if ($_GET['id'] == "laboratoryType") { ?>
         <h3 class="text-dark text-center" style="margin-top: 20px; margin-left:20px; text-transform:uppercase">Add Laboratory Type</h3>

@@ -15,7 +15,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,7 +93,7 @@
 
 .main-section{
     border-radius:10px; 
-    padding:20px; 
+    /* padding:10px;  */
     margin:10px 22px;
     background-color: #fff;
 }
@@ -101,6 +101,24 @@
         background-image: linear-gradient(45deg, #2B7DDF 0%, #5bc0de 51%, #2B7DDF 100%);
         position: relative;
         top: 10px;
+    }
+
+    .logo{
+        position: absolute;
+        top: 50;
+        left: 50;
+    }
+    .heading{
+        color: #2B7DDF;
+        text-decoration: underline;
+        position: relative;
+        top: 20px;
+    }
+    .section-back{
+        background-image: linear-gradient(45deg, #2B7DDF 0%, #5bc0de 51%, #2B7DDF 100%);
+        border-radius:10px; 
+        padding:5px; 
+        margin:10px 22px
     }
 
 </style>
