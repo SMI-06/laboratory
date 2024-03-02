@@ -42,7 +42,7 @@ FOREIGN KEY (Country_Id) REFERENCES countries(id)
 
 
 	 ----------------
-	| CitiesTable: |
+	| Cities 	Table: |
 	 ----------------
 
 create TABLE cities(
@@ -67,10 +67,10 @@ Region_Name varchar(50)
 	| LaboratoryType Table: |
 	 ------------------------------
 
-create table laboratoryType( 
-id int(5) ZEROFILL AUTO_INCREMENT PRIMARY key, 
-Laboratory_Type varchar(50) 
-);
+	create table laboratoryType( 
+	id int(5) ZEROFILL AUTO_INCREMENT PRIMARY key, 
+	Laboratory_Type varchar(50) 
+	);
 
 
 	 ------------------------

@@ -68,7 +68,7 @@ $title = "Lab Automation | Profile | Update"
                                 <script>
                                     function changeLabType() {
                                         let valueLabType = document.querySelector("#laboratorytype").value;
-                                        if (valueLabType === "00000") {
+                                        if (valueLabType === "00003") {
                                             document.querySelector(".labCustomType").classList.remove("d-none");
                                             document.querySelector(".labCustomType input").setAttribute("required", "required");
                                             document.querySelector(".labelLabCustomType").classList.remove("d-none");

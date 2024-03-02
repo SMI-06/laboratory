@@ -11,6 +11,7 @@ if (isset($_REQUEST['add_region'])) {
         header('location: ../show.location.php?id=region');
     }
 }
+
 // Add Country
 if (isset($_REQUEST['add_country'])) {
     $CountryName = $_REQUEST['Countryname'];
@@ -24,6 +25,7 @@ if (isset($_REQUEST['add_country'])) {
         header('location: ../show.location.php?id=country');
     }
 }
+
 // Add province
 if (isset($_REQUEST['add_province'])) {
     $ProvinceName = $_REQUEST['Provincename'];
@@ -37,6 +39,7 @@ if (isset($_REQUEST['add_province'])) {
         header('location: ../show.location.php?id=province');
     }
 }
+
 // Add City
 elseif (isset($_REQUEST['add_city'])) {
     $CityName = $_REQUEST['Cityname'];
