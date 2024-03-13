@@ -128,8 +128,6 @@ CREATE TABLE products (
 	| Testing_product Table: |
 	 -------------------------------
 
-
-
 create table testing_product(
 id int(5) ZEROFILL AUTO_INCREMENT PRIMARY KEY,
 productName varchar(25),
@@ -145,3 +143,45 @@ user_id int(5) ZEROFILL,
 FOREIGN KEY(user_id) REFERENCES signup(id),
 `status` varchar(20) DEFAULT "Pending"
 )
+
+
+	 ----------------------
+	| relations  Table: |
+	 ----------------------
+
+
+CREATE table relations(
+Relation_id int(5) ZEROFILL PRIMARY KEY AUTO_INCREMENT,
+laboratory_id int(5) ZEROFILL,
+FOREIGN KEY(laboratory_id) REFERENCES laboratory(laboratory_id),
+Tester_id int(5) ZEROFILL,
+FOREIGN KEY(Tester_id) REFERENCES signup(id)
+)
+
+
+
+	 ----------------------------------------
+	| Sign Up Table FOR TESTER: |
+	 ----------------------------------------
+
+
+create table signup_Tester(
+    TesterId INT(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    TesterName VARCHAR(20) NOT NULL,
+    TesterEmail VARCHAR(50) NOT NULL UNIQUE,
+    TesterFullName VARCHAR(50),
+    Testerimage VARCHAR(50),
+    TesterCNIC VARCHAR(20) NOT NULL,
+    TesterPhone VARCHAR(15) NOT NULL,
+    TesterReligion VARCHAR(20),
+    TesterGender VARCHAR(10),
+    TesterCity VARCHAR(30),
+    TesterCountry VARCHAR(30),
+    TesterAddress VARCHAR(50),
+    TesterPassword VARCHAR(70) NOT NULL,
+    Role VARCHAR(15) DEFAULT 'Tester',
+    Admin_Id int(5) ZEROFILL,
+    FOREIGN KEY(Admin_Id) REFERENCES signup(id),
+    Laboratory_Id int(5) ZEROFILL,
+    FOREIGN KEY(Laboratory_Id) REFERENCES laboratory(laboratory_id)
+);

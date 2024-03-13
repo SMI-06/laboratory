@@ -29,6 +29,7 @@
     <!-- Libraries Stylesheet -->
     <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="sweetalert2.min.css">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">

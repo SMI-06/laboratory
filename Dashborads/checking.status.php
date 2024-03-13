@@ -25,8 +25,8 @@ $title = "Lab Automation | All Tester"
         if ($_GET['id'] == "laboratory") { ?>
             <h3 class="text-dark text-center text-uppercase">Status Check</h3>
             <div class="col-sm-12 col-xl-12">
-                <div class=" rounded h-100 p-4 table-scrollable" style="overflow-x: scroll;">
-                    <table class="table table-hover" style="width:100%;">
+                <div class=" rounded h-100 p-4 table-scrollable">
+                    <table class="table table-hover table-bordered text-dark text-center" style="width:100%;">
                         <thead>
                             <tr>
                                 <th>Laboratory Id</th>

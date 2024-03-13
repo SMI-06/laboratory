@@ -28,7 +28,7 @@
             <div class="nav-item dropdown">
                 <?php
                 // ADMIN
-                if ($userDetail['Role'] == "Admin") { ?>
+                if ($userDetail['Role'] == "admin") { ?>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-pager me-2"></i>Request</a>
                         <div class="dropdown-menu bg-transparent border-0">

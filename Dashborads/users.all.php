@@ -65,41 +65,78 @@ $title = "Lab Automation | All Users"
 
                     </thead>
                     <tbody>
-
                         <?php
-                        $select = "SELECT * FROM signup";
-                        $res = mysqli_query($conn, $select);
-                        if (mysqli_num_rows($res)) {
-                            while ($row = mysqli_fetch_assoc($res)) { ?>
-                                <tr>
-                                    <th><?php echo $row['id'] ?></th>
-                                    <td><?php echo $row['userName'] ?></td>
-                                    <td><?php echo $row['userEmail'] ?></td>
-                                    <td><?php echo $row['userFullName'] ?></td>
-                                    <td><img src="assets/img/UserImages/<?php echo $row['userimage'] ?>" width="50px" height="50px" class="rounded-circle" alt="">
-                                    </td>
-                                    <td><?php echo $row['userCNIC'] ?></td>
-                                    <td><?php echo $row['userPhone'] ?></td>
-                                    <td><?php echo $row['userReligion'] ?></td>
-                                    <td><?php echo $row['userGender'] ?></td>
-                                    <td><?php echo $row['userCity'] ?></td>
-                                    <td><?php echo $row['userCountry'] ?></td>
-                                    <td><?php echo $row['userAddress'] ?></td>
-                                    <td><?php echo $row['userPassword'] ?></td>
-                                    <td><?php echo $row['Role'] ?></td>
-                                    <td><?php echo $row['Status'] ?></td>
-                                    <td><a href="mail.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-info rounded-pill"><i class="fas fa-paper-plane"></i></a></td>
-                                    <td><a href="user.edit.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-dark rounded-pill"><i class="fas fa-user-edit"></i></a></td>
-                                    <td><a href="user.disable.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-warning rounded-pill"><i class="fas fa-ban"></i></a></td>
-                                    <td><a href="user.delete.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-danger rounded-pill"><i class="far fa-trash-alt"></i></a></td>
-                                </tr>
-                            <?php }
-                        } else { ?>
-                            <td colspan="17" class="text-center"><i class="far fa-times-circle fa-3x"></i>
-                                <h4>No Record Found</h4>
-                            </td>
+                        if ($userDetail['Role'] == "admin") {
+
+                            $select = "SELECT * FROM signup where id = " . $userDetail['userId'];
+                            $res = mysqli_query($conn, $select);
+                            if (mysqli_num_rows($res)) {
+                                while ($row = mysqli_fetch_assoc($res)) { ?>
+                                    <tr>
+                                        <th><?php echo $row['id'] ?></th>
+                                        <td><?php echo $row['userName'] ?></td>
+                                        <td><?php echo $row['userEmail'] ?></td>
+                                        <td><?php echo $row['userFullName'] ?></td>
+                                        <td><img src="assets/img/UserImages/<?php echo $row['userimage'] ?>" width="50px" height="50px" class="rounded-circle" alt="">
+                                        </td>
+                                        <td><?php echo $row['userCNIC'] ?></td>
+                                        <td><?php echo $row['userPhone'] ?></td>
+                                        <td><?php echo $row['userReligion'] ?></td>
+                                        <td><?php echo $row['userGender'] ?></td>
+                                        <td><?php echo $row['userCity'] ?></td>
+                                        <td><?php echo $row['userCountry'] ?></td>
+                                        <td><?php echo $row['userAddress'] ?></td>
+                                        <td><?php echo $row['userPassword'] ?></td>
+                                        <td><?php echo $row['Role'] ?></td>
+                                        <td><?php echo $row['Status'] ?></td>
+                                        <td><a href="mail.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-info rounded-pill"><i class="fas fa-paper-plane"></i></a></td>
+                                        <td><a href="user.edit.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-dark rounded-pill"><i class="fas fa-user-edit"></i></a></td>
+                                        <td><a href="user.disable.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-warning rounded-pill"><i class="fas fa-ban"></i></a></td>
+                                        <td><a href="user.delete.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-danger rounded-pill"><i class="far fa-trash-alt"></i></a></td>
+                                    </tr>
+                                <?php }
+                            } else { ?>
+                                <td colspan="17" class="text-center"><i class="far fa-times-circle fa-3x"></i>
+                                    <h4>No Record Found</h4>
+                                </td>
+                                <?php }
+                        } else if ($userDetail['Role'] == "Super Admin") {
+                            $select = "SELECT * FROM signup";
+                            $res = mysqli_query($conn, $select);
+                            if (mysqli_num_rows($res)) {
+                                while ($row = mysqli_fetch_assoc($res)) { ?>
+                                    <tr>
+                                        <th><?php echo $row['id'] ?></th>
+                                        <td><?php echo $row['userName'] ?></td>
+                                        <td><?php echo $row['userEmail'] ?></td>
+                                        <td><?php echo $row['userFullName'] ?></td>
+                                        <td><img src="assets/img/UserImages/<?php echo $row['userimage'] ?>" width="50px" height="50px" class="rounded-circle" alt="">
+                                        </td>
+                                        <td><?php echo $row['userCNIC'] ?></td>
+                                        <td><?php echo $row['userPhone'] ?></td>
+                                        <td><?php echo $row['userReligion'] ?></td>
+                                        <td><?php echo $row['userGender'] ?></td>
+                                        <td><?php echo $row['userCity'] ?></td>
+                                        <td><?php echo $row['userCountry'] ?></td>
+                                        <td><?php echo $row['userAddress'] ?></td>
+                                        <td><?php echo $row['userPassword'] ?></td>
+                                        <td><?php echo $row['Role'] ?></td>
+                                        <td><?php echo $row['Status'] ?></td>
+                                        <td><a href="mail.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-info rounded-pill"><i class="fas fa-paper-plane"></i></a></td>
+                                        <td><a href="user.edit.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-dark rounded-pill"><i class="fas fa-user-edit"></i></a></td>
+                                        <td><a href="user.disable.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-warning rounded-pill"><i class="fas fa-ban"></i></a></td>
+                                        <td><a href="user.delete.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-danger rounded-pill"><i class="far fa-trash-alt"></i></a></td>
+                                    </tr>
+                                <?php }
+                            } else { ?>
+                                <td colspan="17" class="text-center"><i class="far fa-times-circle fa-3x"></i>
+                                    <h4>No Record Found</h4>
+                                </td>
                         <?php }
+                        }
                         ?>
+
+
                     </tbody>
                 </table>
             </div>
