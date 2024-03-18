@@ -78,8 +78,7 @@ $title = "Lab Automation | Profile | Update"
                             <?php
                             if (isset($_GET["error"])) {
                                 $error = $_GET["error"];
-                                echo '<div class="alert alert-danger" role="alert">
-                        ' . $error . '</div>';
+                                echo '<div class="alert alert-danger" role="alert">' . $error . '</div>';
                             } ?>
                         </div>
                         <div class="col-lg-12">

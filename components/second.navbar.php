@@ -54,15 +54,29 @@
                 <?php
                 if (isset($_SESSION['userDetails'])) {
                     $userdetails = $_SESSION['userDetails'];
+                } else if (isset($_SESSION['testerDetails'])) {
+                    $testerDetails = $_SESSION['testerDetails'];
                 }
                 if (isset($userdetails)) { ?>
                     <div class="dropdown">
                         <button class="button-signin btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $userdetails['userName'] ?>
+                            <?php echo $userdetails['userName'] ?>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="Dashborads/">Dashboard</a>
                             <a class="dropdown-item" href="Dashborads/profile.php">Profile</a>
+                            <a class="dropdown-item" href="Dashborads/auth/auth.logout.php">Logout</a>
+                            <!-- Add more dropdown items as needed -->
+                        </div>
+                    </div>
+                <?php } else if (isset($testerDetails)) { ?>
+                    <div class="dropdown">
+                        <button class="button-signin btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo $testerDetails['testerName'] ?>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="Dashborads/">Dashboard</a>
+                            <a class="dropdown-item" href="Dashborads/profile.php?P_id=tester">Profile</a>
                             <a class="dropdown-item" href="Dashborads/auth/auth.logout.php">Logout</a>
                             <!-- Add more dropdown items as needed -->
                         </div>
