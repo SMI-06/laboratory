@@ -5,6 +5,9 @@ require("auth/auth.check.php");
 if (isset($_SESSION['userDetails'])) {
     $userDetail = $_SESSION['userDetails'];
 }
+if (isset($_SESSION['testerDetails'])) {
+    $testerDetail = $_SESSION['testerDetails'];
+}
 $title = "Lab Automation | All Tester"
 ?>
 
@@ -50,14 +53,14 @@ $title = "Lab Automation | All Tester"
                     <thead>
                         <tr>
                             <?php
-                            $selectColumn = "SELECT * FROM signup";
+                            $selectColumn = "SELECT * FROM signup_tester";
                             $res = mysqli_query($conn, $selectColumn);
                             if (mysqli_num_rows($res) > 0) {
                                 $row = mysqli_fetch_assoc($res);
                                 foreach ($row as $Column => $value) { ?>
                                     <th><?php echo $Column ?></th>
                                 <?php }  ?>
-                                <th colspan="2" class="text-center">Action</th>
+                                <th colspan="3" class="text-center">Action</th>
                             <?php }
                             ?>
                         </tr>
@@ -66,29 +69,38 @@ $title = "Lab Automation | All Tester"
                     <tbody>
 
                         <?php
-                        $select = "SELECT * FROM `signup` where Role = 'Tester'";
+                        $select = "SELECT *,signup_tester.Role as TesterRole,signup_tester.Status as TesterStatus FROM `signup_tester`join signup on signup.id = signup_tester.Admin_Id  ";
                         $res = mysqli_query($conn, $select);
                         if (mysqli_num_rows($res)) {
                             while ($row = mysqli_fetch_assoc($res)) { ?>
                                 <tr>
-                                    <th><?php echo $row['id'] ?></th>
-                                    <td><?php echo $row['userName'] ?></td>
-                                    <td><?php echo $row['userEmail'] ?></td>
-                                    <td><?php echo $row['userFullName'] ?></td>
-                                    <td><img src="assets/img/UserImages/<?php echo $row['userimage'] ?>" width="50px" height="50px" class="rounded-circle" alt="">
+                                    <th><?php echo $row['TesterId'] ?></th>
+                                    <td><?php echo $row['Code'] ?></td>
+                                    <td><?php echo $row['TesterName'] ?></td>
+                                    <td><?php echo $row['TesterEmail'] ?></td>
+                                    <td><?php echo $row['TesterFullName'] ?></td>
+                                    <td><img src="assets/img/UserImages/<?php echo $row['Testerimage'] ?>" width="50px" height="50px" class="rounded-circle" alt="">
                                     </td>
-                                    <td><?php echo $row['userCNIC'] ?></td>
-                                    <td><?php echo $row['userPhone'] ?></td>
-                                    <td><?php echo $row['userReligion'] ?></td>
-                                    <td><?php echo $row['userGender'] ?></td>
-                                    <td><?php echo $row['userCity'] ?></td>
-                                    <td><?php echo $row['userCountry'] ?></td>
-                                    <td><?php echo $row['userAddress'] ?></td>
-                                    <td><?php echo $row['userPassword'] ?></td>
-                                    <td><?php echo $row['Role'] ?></td>
-                                    <td><?php echo $row['Status'] ?></td>
-                                    <td><a href="user.edit.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-dark rounded-pill"><i class="fas fa-user-edit"></i></a></td>
-                                    <td><a class="btn btn-outline-danger rounded-pill"><i class="far fa-trash-alt"></i></a></td>
+                                    <td><?php echo $row['TesterCNIC'] ?></td>
+                                    <td><?php echo $row['TesterPhone'] ?></td>
+                                    <td><?php echo $row['TesterReligion'] ?></td>
+                                    <td><?php echo $row['TesterGender'] ?></td>
+                                    <td><?php echo $row['TesterCity'] ?></td>
+                                    <td><?php echo $row['TesterCountry'] ?></td>
+                                    <td><?php echo $row['TesterAddress'] ?></td>
+                                    <td><?php echo $row['Education'] ?></td>
+                                    <td><?php echo $row['Subject'] ?></td>
+                                    <td><?php echo $row['Institute'] ?></td>
+                                    <td><?php echo $row['Latest Degree'] ?></td>
+                                    <td><?php echo $row['TesterPassword'] ?></td>
+                                    <td><?php echo $row['TesterRole'] ?></td>
+                                    <td><?php echo $row['Admin_Id'] ?></td>
+                                    <td><?php echo $row['Laboratory_Id'] ?></td>
+                                    <td><?php echo $row['TesterStatus'] ?></td>
+                                    <td><?php echo $row['updatedProfile_At'] ?></td>
+                                    <td><a href="edit.php?testerId=<?php echo $row['TesterId'] ?>" class="btn btn-outline-dark rounded-pill"><i class="fas fa-user-edit"></i></a></td>
+                                    <td><a href="disable.php?testerId=<?php echo $row['TesterId'] ?>" class="btn btn-outline-warning rounded-pill"><i class="fas fa-ban"></i></a></td>
+                                    <td><a href="delete.php?testerId=<?php echo $row['TesterId'] ?>" class="btn btn-outline-danger rounded-pill"><i class="far fa-trash-alt"></i></a></td>
                                 </tr>
                             <?php }
                         } else { ?>

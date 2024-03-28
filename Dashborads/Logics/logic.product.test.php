@@ -5,6 +5,10 @@ if (isset($_SESSION['userDetails'])) {
     $userDetail = $_SESSION['userDetails'];
     $logged_id = $userDetail["userId"];
 }
+elseif (isset($_SESSION['testerDetails'])) {
+    $testerDetail = $_SESSION['testerDetails'];
+    $logged_id = $testerDetail["testerId"];
+}
 
 
 if (isset($_REQUEST['add_product'])) {
@@ -25,20 +29,12 @@ if (isset($_REQUEST['add_product'])) {
         } else {    
             $query1 =  "INSERT INTO `products`(`productName`, `productCategory`, `productDescription`, `productPrice`, `productImage`, `user_id`) VALUES ('$product_name','$product_category','$product_description','$product_price','$product_image',$logged_id)";
             $insert_product = mysqli_query($conn,$query1);
-            var_dump($query1);
-            var_dump($insert_product);
-            if ($insert_product == true) {
-                $query = "INSERT INTO `testing_product`(`productName`, `productCetagory`, `productdescription`, `productImage`, `productPrice`, `laboratoryType`, `laboratory`,`user_id`) VALUES (
-                    '$product_name',
-                    '$product_category',
-                    '$product_description',
-                    '$product_image',
-                    '$product_price',
-                    '$product_laboratory_type',
-                    '$product_laboratory','$logged_id')";
-                $insert_testing_product = mysqli_query($conn, $query);
-                header("location: ../index.php");
-            }
+            $p_id =  mysqli_insert_id($conn);
+            $product_nameCode = str_split($product_name);
+            $productCode = $product_nameCode[0] ."-". $p_id;
+            $product_code = mysqli_query($conn,"UPDATE `products` SET `Product_code`='$productCode' WHERE Product_id = $p_id");
+            header("location: ../products.all.php");
+            
         }
     } else {
         echo "<script>alert('Please Upload a Image')</script>";

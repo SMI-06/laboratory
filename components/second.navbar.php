@@ -76,7 +76,9 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="Dashborads/">Dashboard</a>
-                            <a class="dropdown-item" href="Dashborads/profile.php?P_id=tester">Profile</a>
+                            <?php 
+                            if($testerDetails['testerCNIC'] == " "){ ?>
+                            <a class="dropdown-item" href="Dashborads/profile.php?P_id=tester">Profile</a><?php } else{ } ?>
                             <a class="dropdown-item" href="Dashborads/auth/auth.logout.php">Logout</a>
                             <!-- Add more dropdown items as needed -->
                         </div>

@@ -8,6 +8,8 @@ if (isset($_GET['id'])) {
 require("auth/auth.check.php");
 if (isset($_SESSION['userDetails'])) {
     $userDetail = $_SESSION['userDetails'];
+} elseif (isset($_SESSION['testerDetails'])) {
+    $testerDetail = $_SESSION['testerDetails'];
 }
 $title = "Lab Automation | Profile | Update"
 ?>
@@ -31,7 +33,7 @@ $title = "Lab Automation | Profile | Update"
         <form action="logics/logic.product.test.php" method="post" enctype="multipart/form-data">
             <div class="container py-4">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-10 offset-1">
                         <div class="card mb-4 w-100">
                             <div class="card-body">
                                 <div class="row">
@@ -43,7 +45,6 @@ $title = "Lab Automation | Profile | Update"
                                     </div>
                                 </div>
                                 <hr>
-
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <label class="mt-2" for="ProductImage">Product Image</label>
@@ -138,43 +139,35 @@ $title = "Lab Automation | Profile | Update"
     <?php } else if ($_GET['id'] == "productshow") { ?>
         <h3 class="text-dark text-center text-uppercase mt-3"> products</h3>
         <div class="col-sm-12 col-xl-12">
-            <div class=" h-100 p-4 table-scrollable">
+            <div class=" h-100 p-4 table-scrollable" style="overflow-x: scroll;">
                 <table class="table table-hover text-dark table-bordered text-center" style="width:100%;">
                     <thead>
                         <tr>
-                                <th  class="text-center">#</th>
-                                <th  class="text-center">Product Name</th>
-                                <th  class="text-center">Product Category</th>
-                                <th  class="text-center">Product Description</th>
-                                <th  class="text-center">Product Image</th>
-                                <th  class="text-center">Product Price</th>
-                                <th  class="text-center">Status</th>
-                                <th colspan="3" class="text-center">Action</th>
+                            <?php
+                            $query = mysqli_query($conn, "SELECT * from products");
+                            $row = mysqli_fetch_assoc($query);
+                            $keys = array_keys($row);
+                            $lastIndex = count($keys) - 1;
+                            $secondLastIndex = $lastIndex - 1;
+                            foreach ($row as $column => $value) {
+                                if ($column !== $keys[0] && $column !== $keys[$secondLastIndex]) { ?>
+                                    <th><?php echo $column ?></th>
+                            <?php }
+                            }
+                            ?>
+                            <th colspan="3" class="text-center">Action</th>
                         </tr>
 
                     </thead>
                     <tbody>
 
                         <?php
-                        $select = "SELECT * FROM `products` where user_id = '$userDetail[userId]'";
-                        $res = mysqli_query($conn, $select);
-                        if (mysqli_num_rows($res)) {
-                            while ($row = mysqli_fetch_assoc($res)) { ?>
-                                <tr>
-                                    <th><?php echo $row['id'] ?></th>
-                                    <td><?php echo $row['productName'] ?></td>
-                                    <td><?php echo $row['productCategory'] ?></td>
-                                    <td><?php echo $row['productDescription'] ?></td>
-                                    <td><img src="assets/img/UserImages/<?php echo $row['productImage'] ?>" width="50px" height="50px" class="rounded-circle" alt="">
-                                    </td>
-                                    <td><?php echo $row['productPrice'] ?></td>
-                                    <td><?php echo $row['status'] ?></td>
-                                    <td><a href="user.edit.php?id=<?php echo $row['id'] ?>" class="btn btn-outline-dark rounded-pill"><i class="fas fa-user-edit"></i></a></td>
-                                    <td><a class="btn btn-outline-warning rounded-pill"><i class="fas fa-ban"></i></a></td>
-                                    <td><a class="btn btn-outline-danger rounded-pill"><i class="far fa-trash-alt"></i></a></td>
-                                </tr>
-                            <?php }
-                        } else { ?>
+                        if ($userDetail["Role"] == "User") {
+                            require('products.all.php');
+                        } elseif ($testerDetail) {
+                            echo "Tester Query";
+                        }
+                        else { ?>
                             <td colspan="17" class="text-center"><i class="far fa-times-circle fa-3x"></i>
                                 <h4>No Record Found</h4>
                             </td>

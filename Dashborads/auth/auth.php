@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="sweetalert2.min.css">
-
 <?php
 session_start();
 require("../includes/config.php");
@@ -33,17 +31,18 @@ if (isset($_REQUEST['signup'])) {
                 header("Location: ../signup.php?error=" . urlencode($errorUserPassword));
             } else {
                 if (strlen($userPassword) >= 8) {
-                    $_SESSION['userDetails'] = [
-                        'userId' => $row['id'],
-                        'userName' => $row['userName'],
-                        'userEmail' => $row['userEmail'],
-                        'userCNIC' => $row['userCNIC'],
-                        'Role' => $row['Role'],
-                    ];
-                    $_SESSION["loginStatus"] = true;
-                    header("location:../../index.php");
                     $insert = "INSERT INTO `signup`(`userName`, `userEmail`,`userPassword`, `Role`,`Status`) VALUES ('$userName','$userEmail','$userPassword','$userRole','Pending')";
                     $res = mysqli_query($conn, $insert);
+                    // $_SESSION['userDetails'] = [
+                    //     'userId' => $row['id'],
+                    //     'userName' => $row['userName'],
+                    //     'userEmail' => $row['userEmail'],
+                    //     'userCNIC' => $row['userCNIC'],
+                    //     'Role' => $row['Role'],
+                    // ];
+                    // $_SESSION["loginStatus"] = true;
+                    // header("location:../../index.php");
+                    
                     echo "<script>alert('Sign Up Successful')
                     location.href = '../../index.php';
                     </script>";
@@ -55,15 +54,6 @@ if (isset($_REQUEST['signup'])) {
             }
         } else {
             if (strlen($userPassword) >= 8) {
-                $_SESSION['userDetails'] = [
-                    'userId' => $row['id'],
-                    'userName' => $row['userName'],
-                    'userEmail' => $row['userEmail'],
-                    'userCNIC' => $row['userCNIC'],
-                    'Role' => $row['Role'],
-                ];
-                $_SESSION["loginStatus"] = true;
-                header("location:'../../index.php");
                 $insert = "INSERT INTO `signup`(`userName`, `userEmail`,`userPassword`, `Role`,`Status`) VALUES ('$userName','$userEmail','$userPassword','$userRole','Pending')";
                 $res = mysqli_query($conn, $insert);
                 echo "<script>alert('Sign Up Successful')
@@ -105,6 +95,7 @@ if (isset($_REQUEST['tester_signup'])) {
                     if (strlen($TesterPassword) >= 8) {
                         $insert_Query = "INSERT INTO `signup_tester`(`TesterName`, `TesterEmail`, `TesterPassword`, `Role`,`Laboratory_Id`) VALUES ('$TesterName','$TesterEmail','$TesterPassword','Tester','$laboratory')";
                         $res = mysqli_query($conn, $insert_Query);
+                        header('location:../index.php');
                     } else {
                         echo "<script>alert('Password Must Have 8 Characters')</script>";
                     }
@@ -159,7 +150,7 @@ if (isset($_REQUEST['signIn'])) {
                         }
                     }
                     // Admin Login Section
-                    else if ($row['Role'] == "Admin") {
+                    else if ($row['Role'] == "admin") {
                         if ($row['userEmail'] == $userEmail) {
                             if ($row['userPassword'] == $userPassword) {
                                 $_SESSION['userDetails'] = [
@@ -228,13 +219,14 @@ if (isset($_REQUEST['testerSignIn'])) {
                     if ($row['TesterEmail'] == $testerEmail) {
                         if ($row['TesterPassword'] == $testerPassword) {
                             $_SESSION['testerDetails'] = [
+                                'testerCode' => $row['Code'],
                                 'testerId' => $row['TesterId'],
                                 'testerName' => $row['TesterName'],
                                 'testerEmail' => $row['TesterEmail'],
                                 'testerCNIC' => $row['TesterCNIC'],
                                 'Role' => $row['Role'],
                             ];
-                            $_SESSION["loginStatus"] = true;
+                            $_SESSION["testerLoginStatus"] = true;
                             header("location:../../index.php");
                         } else {
 
@@ -253,5 +245,3 @@ if (isset($_REQUEST['testerSignIn'])) {
 
 
 ?>
-<script src="sweetalert2.min.js">
-</script>

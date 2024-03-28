@@ -15,7 +15,7 @@ if (isset($_SESSION['userDetails'])) {
     else {
         $heading = "User";
     }
-} else if (isset($_SESSION['testerDetails'])) {
+} elseif (isset($_SESSION['testerDetails'])) {
     $testerDetails = $_SESSION['testerDetails'];
     $T_id = (int) $testerDetails['testerId'];
     $heading = "Tester";
@@ -40,6 +40,9 @@ $title = "Lab Automation | Profile"
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
+
+<!-- ///////////////   Tester   \\\\\\\\\\\\\\\ -->
+
                         <?php
                         if (isset($_GET['P_id']) == "tester") {
                             if (isset($testerDetails)) {
@@ -48,7 +51,7 @@ $title = "Lab Automation | Profile"
                                 if (mysqli_num_rows($res) > 0) {
                                     $row = mysqli_fetch_assoc($res);
                                     if (isset($row['Testerimage'])) { ?>
-                                        <img class="rounded-circle" src="./assets/img/UserImages/<?php echo $row['Testerimage'] ?>" alt="" style="width: 25%;">
+                                        <img class="rounded-circle" src="./assets/img/testerImages/<?php echo $row['Testerimage'] ?>" alt="" style="width: 25%;">
                                     <?php } else { ?>
                                         <img class="rounded-circle" src="./assets/img/user.png" alt="" style="width: 150px;">
                                     <?php } ?>
@@ -61,7 +64,7 @@ $title = "Lab Automation | Profile"
                                     $res = mysqli_query($conn, "SELECT * FROM `signup_tester` where TesterId =$T_id");
                                     if (mysqli_num_rows($res) > 0) {
                                         $row = mysqli_fetch_assoc($res);
-                                        if (isset($row['userCNIC'])) { ?>
+                                        if (isset($row['TesterCNIC'])) { ?>
                                             <a href="profile.updated.profile.php?testerImage=<?php echo $testerDetails['testerId'] ?> " class="btn btn-outline-dark rounded-pill">Update Profile Image</a>
                                         <?php } else { ?>
                                             <a href="profile.update.php?testerId=<?php echo $testerDetails['testerId'] ?>" class="btn btn-outline-dark rounded-pill">Update Profile</a>
@@ -70,7 +73,10 @@ $title = "Lab Automation | Profile"
                                 </div>
                                 <?php
                             }
-                        } else {
+                        } 
+                        
+                        ///////////////  ADMINS & USERS  \\\\\\\\\\\\\\\\\\
+                        else {
                             $res = mysqli_query($conn, "SELECT * FROM `signup` where id =$id");
                             if (mysqli_num_rows($res) > 0) {
                                 $row = mysqli_fetch_assoc($res);
@@ -80,8 +86,8 @@ $title = "Lab Automation | Profile"
                                     <img class="rounded-circle" src="./assets/img/user.png" alt="" style="width: 150px;">
                                 <?php } ?>
                             <?php } ?>
-                            <h5 class="my-3"><?php echo isset($userDetail['userName']) ?></h5>
-                            <p class="text-muted mb-1"><?php echo isset($userDetail['Role']) ?></p>
+                            <h5 class="my-3"><?php echo $userDetail['userName'] ?></h5>
+                            <p class="text-muted mb-1"><?php echo $userDetail['Role'] ?></p>
                             <!-- <p class="text-muted mb-4">Bay Area, San Francisco, CA</p> -->
                             <div class="d-flex justify-content-center mb-2 mt-3">
                                 <?php
@@ -109,6 +115,15 @@ $title = "Lab Automation | Profile"
                                 $res = mysqli_query($conn, "SELECT * FROM `signup_tester` where TesterId =$T_id");
                                 if (mysqli_num_rows($res) > 0) {
                         ?>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Code</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0"><?php echo $row['Code'] ?></p>
+                                        </div>
+                                    </div>
+                                    <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <p class="mb-0">Full Name</p>
@@ -239,8 +254,8 @@ $title = "Lab Automation | Profile"
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <?php if (isset($row['userCNIC'])) { ?>
-                                                <a href="profile.updated.profile.php?userDetails=<?php echo $testerDetails['testerId'] ?> " class="btn btn-outline-dark rounded-pill">Update Other Details</a>
+                                            <?php if (isset($row['TesterCNIC'])) { ?>
+                                                <a href="profile.updated.profile.php?testerDetails=<?php echo $testerDetails['testerId'] ?> " class="btn btn-outline-dark rounded-pill">Update Other Details</a>
                                             <?php } ?>
                                         </div>
                                     </div>

@@ -11,7 +11,7 @@
                     if (mysqli_num_rows($query) > 0) {
                         $row = mysqli_fetch_assoc($query);
                         if (isset($row['Testerimage'])) { ?>
-                            <img class="rounded-circle" src="assets/img/userImages/<?php echo $row['Testerimage'] ?>" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle" src="assets/img/testerImages/<?php echo $row['Testerimage'] ?>" alt="" style="width: 40px; height: 40px;">
                         <?php } else { ?>
                             <img class="rounded-circle" src="./assets/img/user.png" alt="" style="width: 40px; height: 40px;">
                         <?php } ?>
@@ -41,14 +41,36 @@
 <?php } ?>
 </div>
 <div class="navbar-nav w-100">
+    <a href="index.php" class="nav-item nav-link "><i class="fa fa-clock me-2"></i><small id="liveTime"></small> </a>
     <a href="index.php" class="nav-item nav-link "><i class="fa fa-home me-2"></i>Home</a>
     <div class="nav-item dropdown">
         <?php
-        
+
         // Tester 
-        if(isset($testerDetails['Role'])  == "Tester"){
-            echo "Tester Dashborad";
-        }
+        if (isset($testerDetails['Role'])  == "Tester") { ?>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fab fa-product-hunt me-2"></i>Products</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="request.php?id=laboratory" class="dropdown-item">Add Products</a>
+                    <a href="request.php?id=another" class="dropdown-item">Show Products</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-hourglass-half me-2"></i>Product Status</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="checking.status.php?id=laboratory" class="dropdown-item">Check Status Laboratory</a>
+                    <a href="request.php?id=another" class="dropdown-item">Request For Another</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-paper-plane"></i>Mail</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <!-- <a href="mail.php" class="dropdown-item">Send Mail</a> -->
+                    <a href="mail.php?show_mail_id=show_mail" class="dropdown-item">Sent Mail</a>
+                    <a href="mail.php?show_mail_id=show_mail" class="dropdown-item">Show Mails</a>
+                </div>
+            </div>
+        <?php }
         // ADMIN
         else if ($userDetail['Role'] == "admin") { ?>
             <div class="nav-item dropdown">
@@ -112,7 +134,7 @@
         // User 
         elseif ($userDetail['Role'] == "User") { ?>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-pager me-2"></i>Product</a>
+                <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fab fa-product-hunt me-2"></i>Products</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <a href="product.php?id=productAdd" class="dropdown-item">Add Product For Test</a>
                     <a href="product.php?id=productshow" class="dropdown-item">Show Product</a>
@@ -137,7 +159,7 @@
                         </div>
                     </div> -->
         <?php  }
-       
+
         ?>
     </div>
 </div>

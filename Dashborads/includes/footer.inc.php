@@ -20,3 +20,21 @@
 </body>
 
 </html>
+
+<!--  Function to update live time -->
+<script>
+    function updateLiveTime() {
+        const liveTimeElement = document.getElementById('liveTime');
+        const currentTime = new Date();
+        const hours = currentTime.getHours();
+        const minutes = currentTime.getMinutes();
+        const seconds = currentTime.getSeconds();
+        liveTimeElement.textContent = 'Live time: ' + hours + ':' + minutes + ':' + seconds;
+    }
+
+    // Update live time every second
+    setInterval(updateLiveTime, 1000);
+
+    // Initial call to update live time
+    updateLiveTime();
+</script>

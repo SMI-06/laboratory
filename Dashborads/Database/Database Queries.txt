@@ -185,3 +185,68 @@ create table signup_Tester(
     Laboratory_Id int(5) ZEROFILL,
     FOREIGN KEY(Laboratory_Id) REFERENCES laboratory(laboratory_id)
 );
+
+	 ----------------------------------------------------
+	| Table FOR LabAndUser Relation Table |
+	 ----------------------------------------------------
+
+create table LabAndUser(
+Id int(5) ZEROFILL AUTO_INCREMENT PRIMARY KEY,
+User_Role varchar(10) DEFAULT "Role",    
+User_Id int(5) ZEROFILL,
+FOREIGN key (User_Id) REFERENCES signup(id),
+Laboratory_Id int(5) ZEROFILL,
+FOREIGN KEY(Laboratory_Id) REFERENCES  laboratory(laboratory_id)    
+)
+
+	 ------------------------
+	| Notification Table |
+	 ------------------------
+
+
+CREATE TABLE notification(
+Id int(5) ZEROFILL AUTO_INCREMENT PRIMARY KEY,
+Topic varchar(50),
+User_Id int(5) ZEROFILL,
+FOREIGN KEY(User_Id) REFERENCES signup(Id),
+notificationTime Time,
+notificationdate Date    
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////// ------------------------- Trigger  ----------------------------------\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+BEGIN
+ DECLARE tester_id_val INT;
+    DECLARE laboratory_id_val INT;
+
+    -- Retrieve Tester_Id and laboratory_Id from the inserted row
+    SELECT Tester_Id, laboratory_Id INTO tester_id_val, laboratory_id_val
+    FROM products
+    WHERE product_id = NEW.product_id;
+
+    -- Insert into notification table
+    INSERT INTO notification(Topic, User_Id, notificationTime, notificationdate, Tester_Id, laboratory_Id)
+    VALUES (NEW.productName, NEW.user_id, CURRENT_TIME, CURRENT_DATE, tester_id_val, laboratory_id_val);
+END

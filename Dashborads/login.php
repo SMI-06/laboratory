@@ -64,13 +64,16 @@ if (isset($_SESSION["loginStatus"])) {
                             }
                             ?>
                         </div>
-                        <!-- <div class="d-flex justify-content-between"> -->
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-start">
+                                <a href="login.php" class="text-dark"><i class="fas fa-arrow-left"></i></a>
+                            </div>
                             <div class="d-flex justify-content-end mb-4">
                                 <a href="forgot_password.php" class="text-dark">Forgot Password</a>
                             </div>
-                        <!-- </div> -->
-                        <button type="submit" name="testerSignIn" class="btn btn-dark  rounded-pill py-3 w-100 mb-4">Sign In</button>
-                        <p class="text-center mb-0">Don't have an Account? <a href="./signup.php?signUp=tester">Sign Up</a></p>
+                        </div>
+                            <button type="submit" name="testerSignIn" class="btn btn-dark  rounded-pill py-3 w-100 mb-4">Sign In</button>
+                            <p class="text-center mb-0">Don't have an Account? <a href="./signup.php?signUp=tester">Sign Up</a></p>
                     </form>
                 <?php } else {  ?>
                     <div class="d-flex align-items-center justify-content-center mb-3">

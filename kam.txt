@@ -1,0 +1,22 @@
+
+Backup table for notification
+
+User Id
+Lab id
+admin id 
+tester id / Code
+product id / Code
+time and date 
+
+
+
+DELIMITER //
+
+ CREATE TRIGGER noti_trigger 
+     AFTER INSERT ON products  
+       FOR EACH ROW 
+          BEGIN 
+            I INSERT INTO `notification`(`Topic`, `User_Id`, `notificationTime`, `notificationdate`) VALUES (NEW.productName, NEW.user_id, CURRENT_TIME,CURRENT_date);
+          END;
+
+DELIMITER ;

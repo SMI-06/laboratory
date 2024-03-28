@@ -270,7 +270,7 @@ $title = "Lab Automation | Profile | Update"
                                 <div class="card-body text-center">
                                     <?php
                                     if (isset($row['Testerimage'])) { ?>
-                                        <img class="rounded-circle" src="./assets/img/UserImages/<?php echo $row['Testerimage'] ?>" alt="" style="width: 25%;">
+                                        <img class="rounded-circle" src="./assets/img/testerImages/<?php echo $row['Testerimage'] ?>" alt="" style="width: 25%;">
                                     <?php } else { ?>
                                         <img class="rounded-circle" src="./assets/img/user.png" alt="" style="width: 150px;">
                                     <?php } ?>
@@ -304,7 +304,7 @@ $title = "Lab Automation | Profile | Update"
                                             <label class="mb-0" for="name">User Name</label>
                                         </div>
                                         <div class="col-sm-9">
-                                            <input type="text" readonly class="form-control" name="updateName" value="<?php echo $row['TesterName'] ?>" id="name">
+                                            <input type="text" readonly class="form-control" name="UserName" value="<?php echo $row['TesterName'] ?>" id="name">
                                         </div>
                                     </div>
                                     <hr>

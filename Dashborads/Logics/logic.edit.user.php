@@ -10,5 +10,13 @@ if(isset($_REQUEST['editUser'])){
     echo"<script>alert('Role & Status Updated')</script>";
     header('location: ../users.all.php ');
 
+}   elseif (isset($_REQUEST['editTester'])) {
+    $TesterId = $_REQUEST['TesterId'];
+    $testerStatus = $_REQUEST['testerStatus'];
+    $updatequery = mysqli_query($conn,"UPDATE `signup_tester` SET `Status`='$testerStatus' WHERE `TesterId` = $TesterId"); 
+
+    echo"<script>alert('Status Updated')</script>";
+    header('location: ../tester.all.php ');
 }
+
 ?>

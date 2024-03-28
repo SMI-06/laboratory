@@ -40,8 +40,12 @@ if (isset($_REQUEST['save'])) {
 // Tester Update Profile
 
 if (isset($_REQUEST['tester_profile_save'])) {
+    $testerId = $_REQUEST['testerId'];
+    $testerUserName = $_REQUEST['UserName'];
+    // testerId
     $testerImage = $_FILES['testerImage'];
     $ImageTmpName = $testerImage['tmp_name'];
+    // $testerImageName = $testerImage['name'];
     $Imagepath = '../assets/img/testerImages/' . $testerImage['name'];
     $uploadImage = move_uploaded_file($ImageTmpName, $Imagepath);
     if ($uploadImage) {
@@ -50,6 +54,9 @@ if (isset($_REQUEST['tester_profile_save'])) {
         $AttachYourLatestDegreeImagepath = '../assets/img/testerImages/testerDegreeImages/' . $AttachYourLatestDegree['name'];
         $uploadDegreeImage = move_uploaded_file($AttachYourLatestDegreeImageTmpName, $AttachYourLatestDegreeImagepath);
         if ($uploadDegreeImage) {
+            $testerNameCode = str_split($testerUserName);
+            $testerCode = $testerNameCode[2] ."-". $testerId;
+            // echo $testerCode;exit();
             $testerFullName = $_REQUEST['testerFullName'];
             $testerCNIC = $_REQUEST['testerCnic'];
             $testerReligion = $_REQUEST['testerReligion'];
@@ -65,9 +72,30 @@ if (isset($_REQUEST['tester_profile_save'])) {
             if (!($testerFullName && $testerCNIC && $testerReligion && $testerPhone && $testerGender && $testerAddress && $testerCity && $testerCountry && $testerEducation && $testerSubject && $testerInstitute && $AttachYourLatestDegree)) {
                 echo "<script>alert('Filled The Record')</script>";
             } else {
-                echo "Done";
+                $selectAdminId =  mysqli_query($conn, "SELECT laboratory.user_id, signup_tester.TesterId FROM signup_tester join laboratory on laboratory.laboratory_id = signup_tester.Laboratory_Id;");
+                // $res = mysqli_query($conn,$selectAdminId);
+                if (mysqli_num_rows($selectAdminId) > 0) {
+                    $row = mysqli_fetch_assoc($selectAdminId);
+                    $admin_Id = $row["user_id"];
+                }
+
+                // /////////////////// Testing point testing krni hai.............
+
+                $query = "UPDATE `signup_tester` SET `Code` = '$testerCode' , `TesterFullName`='$testerFullName',`Testerimage`='".$testerImage['name']."',`TesterCNIC`='$testerCNIC',`TesterPhone`='$testerPhone',`TesterReligion`='$testerReligion',`TesterGender`='$testerGender',`TesterCity`='$testerCity',`TesterCountry`='$testerCountry',`TesterAddress`='$testerAddress',`Education`='$testerEducation',`Subject`='$testerSubject',`Institute`='$testerInstitute',`Latest Degree`='".$AttachYourLatestDegree['name']."', `Admin_Id`='$admin_Id' WHERE `TesterId` = $testerId";
+                
+                
+                var_dump($query); 
+                                // exit();
+                $insert_tester = mysqli_query($conn, $query);
+                var_dump($insert_tester); 
+                                exit();
+                // /////////////////////////////
+
+                $insert_tester = mysqli_query($conn, "INSERT INTO `signup_tester`(`TesterFullName`, `Testerimage`, `TesterCNIC`, `TesterPhone`, `TesterReligion`, `TesterGender`, `TesterCity`, `TesterCountry`, `TesterAddress`, `Education`, `Subject`, `Institute`, `Latest Degree`, `Admin_Id`) VALUES ('$testerFullName','$testerImage[name]','$testerCNIC','$testerPhone','$testerReligion','$testerGender','$testerCity','$testerCountry','$testerAddress','$testerEducation','$testerSubject','$testerInstitute','$AttachYourLatestDegree[name]','$admin_Id')");
+                print_r($insert_tester);
+                exit();
             }
-        }else{
+        } else {
             echo "<script>alert('Upload The Degree Image')</script>";
         }
     } else {
