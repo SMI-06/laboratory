@@ -14,9 +14,6 @@ if (isset($_REQUEST['send-request'])) {
     if (!($laboratory_name && $laboratory_address && $laboratory_city && $laboratory_country)) {
         header('location: ../request.php?id=laboratory');
     } else {
-
-
-
         $query = mysqli_query($conn, "INSERT INTO `laboratory`(`laboratory_name`, `laboratory_address`, `laboratory_type`,`laboratory_type_custom`, `laboratory_city`, `laboratory_country`,`user_id`) VALUES ('$laboratory_name','$laboratory_address','$laboratory_type','$laboratory_type_write','$laboratory_city','$laboratory_country',$userId)");
         // var_dump($query);
         header('location: ../checking.status.php?id=laboratory');

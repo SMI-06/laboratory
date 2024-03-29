@@ -51,15 +51,16 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fab fa-product-hunt me-2"></i>Products</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="request.php?id=laboratory" class="dropdown-item">Add Products</a>
-                    <a href="request.php?id=another" class="dropdown-item">Show Products</a>
+                    <!-- <a href="request.php?id=laboratory" class="dropdown-item">Add Products</a> -->
+                    <a href="product.php?id=productshow" class="dropdown-item">Show Products</a>
                 </div>
             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-hourglass-half me-2"></i>Product Status</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="checking.status.php?id=laboratory" class="dropdown-item">Check Status Laboratory</a>
-                    <a href="request.php?id=another" class="dropdown-item">Request For Another</a>
+                    <a href="checking.status.php?id=laboratory" class="dropdown-item">Pending Products</a>
+                    <a href="request.php?id=another" class="dropdown-item">Pass Products</a>
+                    <a href="request.php?id=another" class="dropdown-item">Fail Products</a>
                 </div>
             </div>
             <div class="nav-item dropdown">

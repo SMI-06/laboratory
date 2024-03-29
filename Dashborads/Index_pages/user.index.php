@@ -6,7 +6,7 @@
                 <div class="row g-4 mt-2">
                     <h4 class="heading">Products</h4>
                     <div class="col-sm-6 col-xl-3">
-                        <a href="products.all.php">
+                        <a href="product.php?id=productshow">
                             <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                                 <i class="fas fa-boxes fa-3x text-dark"></i>
                                 <div class="ms-3">

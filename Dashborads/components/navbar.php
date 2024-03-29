@@ -72,10 +72,10 @@ if (isset($_SESSION['userDetails'])) {
                         <a href="#" class="dropdown-item">
                             <h6 class="fw-normal mb-0">
                                 <?php
-                                $select = mysqli_query($conn, "SELECT * FROM `notification` join signup on notification.User_Id = signup.id where User_Id = ". $tester_id." ORDER BY `notification`.`notificationTime` DESC");
+                                $select = mysqli_query($conn, "SELECT * FROM `notification` join signup on notification.User_Id = signup.id where User_Id = " . $tester_id . " ORDER BY `notification`.`notificationTime` DESC");
                                 if (mysqli_num_rows($select) > 0) {
                                     while ($row = mysqli_fetch_assoc($select)) { ?>
-                                        <hr class="dropdown-divider">
+                                        <!-- <hr class="dropdown-divider"> -->
                                         <a href="#" class="dropdown-item d-flex justify-content-center">
                                             <h6 class="fw-normal mb-0"><?php echo $row['Topic'] . " | <br> By " . $row['userName'] . "| <br> "; ?></h6>
                                             <!-- <small id="liveTime"></small> -->
@@ -140,7 +140,7 @@ if (isset($_SESSION['userDetails'])) {
                     <i class="fa fa-bell me-lg-2"></i>
                     <span class="position-absolute left-0 translate-middle badge text-dark ">
                         <?php
-                        $select = mysqli_query($conn, "SELECT count(*) as count FROM `notification` where User_Id = ". $id);
+                        $select = mysqli_query($conn, "SELECT count(*) as count FROM `notification` where User_Id = " . $id);
                         $row = mysqli_fetch_assoc($select);
                         echo $row['count']
                         ?>
@@ -154,41 +154,41 @@ if (isset($_SESSION['userDetails'])) {
 
                     <!-- <hr class="dropdown-divider"> -->
                     <a href="#" class="dropdown-item">
-                            <h6 class="fw-normal mb-0">
-                                <?php
-                                $select = mysqli_query($conn, "SELECT * FROM `notification` join signup on notification.User_Id = signup.id where User_Id = ". $id." ORDER BY `notification`.`notificationTime` DESC");
-                                if (mysqli_num_rows($select) > 0) {
-                                    while ($row = mysqli_fetch_assoc($select)) { ?>
-                                        <hr class="dropdown-divider">
-                                        <a href="#" class="dropdown-item d-flex justify-content-center">
-                                            <h6 class="fw-normal mb-0"><?php echo $row['Topic'] . " | <br> By " . $row['userName'] . "| <br> "; ?></h6>
-                                            <!-- <small id="liveTime"></small> -->
-                                            <small>
-                                                <?php
-                                                date_default_timezone_set('Asia/Karachi');
-                                                $notificationTime = strtotime($row['notificationTime']);
-                                                $currentTime = time();
-                                                $timeDiff = $currentTime - $notificationTime;
+                        <h6 class="fw-normal mb-0">
+                            <?php
+                            $select = mysqli_query($conn, "SELECT * FROM `notification` join signup on notification.User_Id = signup.id join laboratory on notification.laboratory_Id = laboratory. where User_Id = " . $id . " ORDER BY `notification`.`notificationTime` DESC");
+                            if (mysqli_num_rows($select) > 0) {
+                                while ($row = mysqli_fetch_assoc($select)) { ?>
+                                    <hr class="dropdown-divider">
+                                    <a href="#" class="dropdown-item d-flex justify-content-center">
+                                        <h6 class="fw-normal mb-0"><?php echo $row['Topic'] . " | By " . $row['userName'] . " | " . $row['laboratory_Id'] ." "; ?></h6>
+                                        <!-- <small id="liveTime"></small> -->
+                                        <small class="d-flex justify-content-around">
+                                            <?php
+                                            date_default_timezone_set('Asia/Karachi');
+                                            $notificationTime = strtotime($row['notificationTime']);
+                                            $currentTime = time();
+                                            $timeDiff = $currentTime - $notificationTime;
 
-                                                if ($timeDiff < 60) {
-                                                    echo "Just now";
-                                                } elseif ($timeDiff < 3600) {
-                                                    $minutes = floor($timeDiff / 60);
-                                                    echo $minutes . " minutes ago";
-                                                } else {
-                                                    $hours = floor($timeDiff / 3600);
-                                                    echo $hours . " hours ago";
-                                                }
-                                                ?>
-                                            </small>
-                                            <small><?php // echo $row['notificationdate'] 
-                                                    ?></small>
-                                        </a>
+                                            if ($timeDiff < 60) {
+                                                echo " <br> Just now";
+                                            } elseif ($timeDiff < 3600) {
+                                                $minutes = floor($timeDiff / 60);
+                                                echo " <br> " . $minutes . " minutes ago";
+                                            } else {
+                                                $hours = floor($timeDiff / 3600);
+                                                echo " <br> " . $hours . " hours ago";
+                                            }
+                                            ?>
+                                        </small>
+                                        <small><?php // echo $row['notificationdate'] 
+                                                ?></small>
+                                    </a>
 
-                                <?php }
-                                } ?>
-                            </h6>
-                        </a>
+                            <?php }
+                            } ?>
+                        </h6>
+                    </a>
                 </div>
             </div>
             <!-- Notificatin End -->

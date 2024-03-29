@@ -237,16 +237,18 @@ notificationdate Date
 
 ////////////////////////// ------------------------- Trigger  ----------------------------------\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+DELIMITER //
+CREATE TRIGGER noti
+After INSERT ON products 
+FOR EACH ROW
 BEGIN
- DECLARE tester_id_val INT;
-    DECLARE laboratory_id_val INT;
+    INSERT INTO notification(Topic, User_Id, laboratory_Id, notificationTime, notificationdate)
+    VALUES (NEW.productName, NEW.user_id, NEW.lab_id, CURRENT_TIME, CURRENT_DATE);
+END //
 
-    -- Retrieve Tester_Id and laboratory_Id from the inserted row
-    SELECT Tester_Id, laboratory_Id INTO tester_id_val, laboratory_id_val
-    FROM products
-    WHERE product_id = NEW.product_id;
+DELIMITER ;
 
-    -- Insert into notification table
-    INSERT INTO notification(Topic, User_Id, notificationTime, notificationdate, Tester_Id, laboratory_Id)
-    VALUES (NEW.productName, NEW.user_id, CURRENT_TIME, CURRENT_DATE, tester_id_val, laboratory_id_val);
-END
+////////////////////////// ------------------------- Foreign KEY  ----------------------------------\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+ALTER table products
+Add CONSTRAINT lab_id FOREIGN KEY(lab_id) REFERENCES laboratory(laboratory_id);
