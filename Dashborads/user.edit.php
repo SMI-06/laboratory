@@ -34,13 +34,11 @@ $title = "Lab Automation | All Users "
                 
                 if(mysqli_num_rows($query)){
                     while($row = mysqli_fetch_assoc($query)){;
-                        print_r($id); 
-
                 ?>
                 <div class="row mb-3">
                     <label for="UserName" class="col-sm-2 col-form-label">User Name</label>
                     <div class="col-sm-10">
-                        <input type="text" readonly name="UserId" class="form-control" value="<?php echo $row['id'] ?>" id="UserId">
+                        <input type="text" hidden readonly name="UserId" class="form-control" value="<?php echo $row['id'] ?>" id="UserId">
                         <input type="text" readonly name="UserName" class="form-control" value="<?php echo $row['userName'] ?>" id="UserName">
                     </div>
                 </div>
@@ -105,7 +103,6 @@ $title = "Lab Automation | All Users "
                     <select class="form-select" name="UserRole" id="UserRole" aria-label="Floating label select example">
                             <option selected disabled hidden><?php echo $row['Role'] ?></option>
                             <option value="Admin">Admin</option>
-                            <option value="Tester">Tester</option>
                             <option value="Employee">Employee</option>
                             <option value="User">User</option>
                         </select>

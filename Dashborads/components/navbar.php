@@ -156,12 +156,12 @@ if (isset($_SESSION['userDetails'])) {
                     <a href="#" class="dropdown-item">
                         <h6 class="fw-normal mb-0">
                             <?php
-                            $select = mysqli_query($conn, "SELECT * FROM `notification` join signup on notification.User_Id = signup.id join laboratory on notification.laboratory_Id = laboratory. where User_Id = " . $id . " ORDER BY `notification`.`notificationTime` DESC");
+                            $select = mysqli_query($conn, "SELECT * FROM `notification` JOIN signup ON notification.User_Id = signup.id JOIN laboratory ON notification.laboratory_Id = laboratory.laboratory_id WHERE notification.User_Id = 00003 AND notification.laboratory_Id = 00001 ORDER BY `notification`.`notificationTime` DESC");
                             if (mysqli_num_rows($select) > 0) {
                                 while ($row = mysqli_fetch_assoc($select)) { ?>
                                     <hr class="dropdown-divider">
                                     <a href="#" class="dropdown-item d-flex justify-content-center">
-                                        <h6 class="fw-normal mb-0"><?php echo $row['Topic'] . " | By " . $row['userName'] . " | " . $row['laboratory_Id'] ." "; ?></h6>
+                                        <h6 class="fw-normal mb-0"><?php echo $row['Topic'] . " | By " . $row['userName'] . " | " . $row['laboratory_name'] ." "; ?></h6>
                                         <!-- <small id="liveTime"></small> -->
                                         <small class="d-flex justify-content-around">
                                             <?php
