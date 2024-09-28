@@ -87,7 +87,7 @@
                 <h4 class="heading">Laboratory</h4>
                 <div class="col-sm-6 col-xl-3">
                     <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
-                        <i class="fa fa-laptop-medical fa-3x text-dark"></i>
+                        <i class="fa fa-laptop-medical fa-2x text-dark"></i>
                         <div class="ms-3 text-dark">
                             <p class="mb-2" style="white-space: nowrap !important;">All Laboratories</p>
                             <?php
@@ -100,7 +100,7 @@
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
-                        <i class="fa fa-check fa-3x text-dark"></i>
+                        <i class="fa fa-check fa-2x text-dark"></i>
                         <div class="ms-3 text-dark">
                             <p class="mb-2" style="white-space: nowrap !important;">Active Laboratories</p>
                             <?php
@@ -111,6 +111,19 @@
                         </div>
                     </div>
                 </div>
+                <!-- <div class="col-sm-6 col-xl-3">
+                    <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="fa fa-check fa-3x text-dark"></i>
+                        <div class="ms-3 text-dark">
+                            <p class="mb-2" style="white-space: nowrap !important;">Active Laboratories</p>
+                            <?php
+                            // $query = mysqli_query($conn, "SELECT count(*) as id 
+                            // FROM laboratory");
+                            // $line = mysqli_fetch_assoc($query) ?>
+                            <h6 class="mb-0"><?php // echo $line['id'] ?></h6>
+                        </div>
+                    </div>
+                </div> -->
                 <div class="col-sm-6 col-xl-3">
                     <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
                         <i class="fas fa-exclamation fa-3x text-dark"></i>

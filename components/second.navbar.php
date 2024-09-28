@@ -3,7 +3,7 @@
         /* height: 50px; */
         /* margin-top: 50px; */
         /* padding: 15px 30px; */
-        width: 150%;
+        width: 100%;
         text-align: center;
         text-transform: uppercase;
         transition: 0.5s;
@@ -49,8 +49,7 @@
                     <li><a class="text-info navlinks" href="contact.php">Contact Us</a></li>
                 </ul>
             </div>
-            <div class="col-sm-2 col-lg-2 d-none d-lg-block appoint" style="padding-left:10%;
-            ">
+            <div class="col-sm-2 col-lg-2 d-none d-lg-block appoint" style="padding-left:5%;">
                 <?php
                 if (isset($_SESSION['userDetails'])) {
                     $userdetails = $_SESSION['userDetails'];

@@ -119,7 +119,7 @@
         background-image: linear-gradient(45deg, #2B7DDF 0%, #5bc0de 51%, #2B7DDF 100%);
         border-radius:10px; 
         padding:5px; 
-        margin:10px 22px
+        margin:10px 22px;
     }
 
 </style>

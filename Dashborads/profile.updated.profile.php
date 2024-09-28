@@ -58,60 +58,37 @@ $title = "Lab Automation | Profile | Update"
 </style>
 
 <section class="section-back">
-    <?php
-    if (isset($_GET['Image'])) { ?>
-        <h3 class="text-dark text-center" style="margin-top: 20px; margin-left:20px; text-transform:uppercase">Update Profile Image</h3>
-        <!-- <div > -->
-        <form action="Logics/logic.profile.update.php" method="post" enctype="multipart/form-data">
-            <div class="container py-4">
-                <div class="row">
-                    <?php
-                    if (isset($_GET['userid'])) {
-                        $id = $_GET['userid'];
-                    }
-                    $query = mysqli_query($conn, "Select * From signup where id = $id");
-                    if (mysqli_num_rows($query) > 0) {
-                        $row = mysqli_fetch_assoc($query);
-                        // print_r($row);
-                    ?>
-                        <div class="msg" style=" width: 84%; ">
-                            <?php
-                            if (isset($_GET["error"])) {
-                                $error = $_GET["error"];
-                                echo '<div class="alert alert-danger" role="alert">' . $error . '</div>';
-                            } ?>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="card mb-4">
-                                <div class="card-body text-center">
-                                    <?php
-                                    if (isset($row['userimage'])) { ?>
-                                        <img class="rounded-circle" src="./assets/img/UserImages/<?php echo $row['userimage'] ?>" alt="" style="width: 25%;">
-                                    <?php } else { ?>
-                                        <img class="rounded-circle" src="./assets/img/user.png" alt="" style="width: 150px;">
-                                    <?php } ?>
-                                    <?php // } 
-                                    ?>
-                                    <!-- <h5 class="my-3"><?php echo $row['userEmail'] ?></h5> -->
-                                    <div class="d-flex justify-content-center mb-2 mt-3">
-                                        <label for="file-upload" class="upload">
-                                            <input type="file" id="file-upload" name="userUpdatedProfileImage" class="sr-only">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    <?php  } ?>
-                </div>
-            </div>
-        </form>
-        <!-- </div> -->
-    <?php } elseif (isset($_GET['userDetails'])) { ?>
+<form action="Logics/logic.profile.update.php" method="post" enctype="multipart/form-data">
+    <?php if (isset($_GET['userDetails'])) { ?>
         <div class="col-lg-8 m-auto">
             <div class="card mb-4 w-100">
                 <div class="card-body">
                     <div class="row">
+                        <div class="col-sm-3">
+                            <!-- <label class="mb-0" for="name">Your Id</label> -->
+                            <?php
+                            if (isset($row['userimage'])) { ?>
+                                <img class="rounded-circle" src="./assets/img/UserImages/<?php echo $row['userimage'] ?>" alt="" style="width: 25%;">
+                            <?php } else { ?>
+                                <img class="rounded-circle" id="imagePreview" src="./assets/img/user.png" alt="" style="width: 50px;">
+                            <?php } ?>
+                        </div>
+                        <div class="col-sm-9">
+                            <label for="file-upload" class="upload">
+                                <input type="file" onchange="previewImage(event)" id="file-upload" name="userUpdatedProfileImage" class="sr-only">
+                            </label>
+                        </div>
+                        <script>
+                            function previewImage(event) {
+                                var reader = new FileReader();
+                                reader.onload = function() {
+                                    var output = document.getElementById('imagePreview');
+                                    output.src = reader.result;
+                                };
+                                reader.readAsDataURL(event.target.files[0]);
+                            }
+                        </script>
+                        <hr>
                         <div class="col-sm-3">
                             <label class="mb-0" for="name">Your Id</label>
                         </div>
@@ -194,6 +171,19 @@ $title = "Lab Automation | Profile | Update"
                                     <input class="form-check-input" checked type="radio" name="userGender" id="Female" value="Female">
                                     <label class="form-check-label" for="Female">Female</label>
                                 </div>
+                            <?php } else { ?>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="userGender" id="Male" value="Male">
+                                    <label class="form-check-label" for="Male">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="userGender" id="Female" value="Female">
+                                    <label class="form-check-label" for="Female">Female</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="userGender" id="Custom" value="Custom">
+                                    <label class="form-check-label" for="Custom">Custom</label>
+                                </div>
                             <?php } ?>
 
                         </div>
@@ -269,7 +259,7 @@ $title = "Lab Automation | Profile | Update"
         </div>
     <?php }
     ?>
-
+</form>
 </section>
 
 <!-- Footer Start -->

@@ -88,19 +88,7 @@ $title = "Lab Automation | Profile"
                             <?php } ?>
                             <h5 class="my-3"><?php echo $userDetail['userName'] ?></h5>
                             <p class="text-muted mb-1"><?php echo $userDetail['Role'] ?></p>
-                            <!-- <p class="text-muted mb-4">Bay Area, San Francisco, CA</p> -->
-                            <div class="d-flex justify-content-center mb-2 mt-3">
-                                <?php
-                                $res = mysqli_query($conn, "SELECT * FROM `signup` where id =$id");
-                                if (mysqli_num_rows($res) > 0) {
-                                    $row = mysqli_fetch_assoc($res);
-                                    if (isset($row['userCNIC'])) { ?>
-                                        <a href="profile.updated.profile.php?Image=<?php echo $userDetail['userId'] ?> " class="btn btn-outline-dark rounded-pill">Update Profile Image</a>
-                                    <?php } else { ?>
-                                        <a href="profile.update.php?userid=<?php echo $userDetail['userId'] ?>" class="btn btn-outline-dark rounded-pill">Update Profile</a>
-                                <?php }
-                                } ?>
-                            </div>
+                           
                         <?php } ?>
                     </div>
                 </div>
@@ -323,28 +311,10 @@ $title = "Lab Automation | Profile"
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">City</p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0"><?php echo $row['userCity'] ?></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0">Country</p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p class="text-muted mb-0"><?php echo $row['userCountry'] ?></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
                                         <p class="mb-0">Address</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="text-muted mb-0"><?php echo $row['userAddress'] ?></p>
+                                        <p class="text-muted mb-0"><?php echo $row['userAddress'] .", ". $row['userCity'] .", ". $row['userCountry'] ?></p>
                                     </div>
                                 </div>
                                 <hr>
@@ -359,9 +329,17 @@ $title = "Lab Automation | Profile"
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <?php if (isset($row['userCNIC'])) { ?>
-                                            <a href="profile.updated.profile.php?userDetails=<?php echo $userDetail['userId'] ?> " class="btn btn-outline-dark rounded-pill">Update Other Details</a>
-                                        <?php } ?>
+                                        <?php 
+                                            if( isset($userDetail['userCNIC'])){
+                                                echo "hello". $userDetail['userCNIC'];
+                                            }
+                                        ?> 
+                                    
+                                        <!-- <?php // if (isset($row['userCNIC'])) { ?>
+                                            <a href="profile.updated.profile.php?userDetails=<?php echo $userDetail['userCNIC'] ?> " class="btn btn-outline-dark rounded-pill">Update Details</a>
+                                        <?php  // } else { ?> 
+                                            <a href="profile.updated.profile.php?userDetails=<?php echo $userDetail['userId'] ?> " class="btn btn-outline-dark rounded-pill">Update Profile Details</a>
+                                        <?php  // } ?> -->
                                     </div>
                                 </div>
                         <?php }

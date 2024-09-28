@@ -5,7 +5,7 @@ require("../includes/config.php");
 if (isset($_REQUEST['save'])) {
     $userId = $_REQUEST['userId'];
     // echo $userId; exit();
-    $userImage = $_FILES['userImage'];
+    $userImage = $_FILES['userUpdatedProfileImage'];
     $userImageName = $userImage['name'];
     $ImageTmpName = $userImage['tmp_name'];
     $Imagepath = '../assets/img/UserImages/' . $userImage['name'];

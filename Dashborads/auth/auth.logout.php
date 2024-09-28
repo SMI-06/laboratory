@@ -8,4 +8,5 @@ if(isset($_SESSION["loginStatus"])){
     session_destroy();
     header("location:../login.php?signUp=tester");
 }
+
 ?>

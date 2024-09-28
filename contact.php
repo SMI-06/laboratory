@@ -15,8 +15,6 @@ require 'includes/header.inc.php';
 <!-- Contact Form -->
 <?php require 'components/contact.form.php' ?>
 
-<!-- Map -->
-<?php require 'components/contact.map.php' ?>
 
 <div class="bg-white" style="height: 30px;"></div>
 

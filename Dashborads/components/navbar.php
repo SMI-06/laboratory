@@ -140,9 +140,9 @@ if (isset($_SESSION['userDetails'])) {
                     <i class="fa fa-bell me-lg-2"></i>
                     <span class="position-absolute left-0 translate-middle badge text-dark ">
                         <?php
-                        $select = mysqli_query($conn, "SELECT count(*) as count FROM `notification` where User_Id = " . $id);
-                        $row = mysqli_fetch_assoc($select);
-                        echo $row['count']
+                        // $select = mysqli_query($conn, "SELECT count(*) as count FROM `notification` where User_Id = " . $id);
+                        // $row = mysqli_fetch_assoc($select);
+                        // echo $row['count']
                         ?>
                     </span>
                     <span class="d-none d-lg-inline-flex">
@@ -156,8 +156,9 @@ if (isset($_SESSION['userDetails'])) {
                     <a href="#" class="dropdown-item">
                         <h6 class="fw-normal mb-0">
                             <?php
-                            $select = mysqli_query($conn, "SELECT * FROM `notification` JOIN signup ON notification.User_Id = signup.id JOIN laboratory ON notification.laboratory_Id = laboratory.laboratory_id WHERE notification.User_Id = 00003 AND notification.laboratory_Id = 00001 ORDER BY `notification`.`notificationTime` DESC");
-                            if (mysqli_num_rows($select) > 0) {
+                            // $select = mysqli_query($conn, "SELECT * FROM `notification` JOIN signup ON notification.User_Id = signup.id JOIN laboratory ON notification.laboratory_Id = laboratory.laboratory_id WHERE notification.User_Id = signup.id AND notification.laboratory_Id = laboratory.laboratory_id ORDER BY `notification`.`notificationTime` DESC");
+                            $select = mysqli_query($conn, "SELECT * FROM `notification` JOIN signup ON notification.User_Id = signup.id WHERE notification.User_Id = signup.id ORDER BY `notification`.`notificationTime` DESC");
+                            if (mysqli_num_rows($select) >= 0) {
                                 while ($row = mysqli_fetch_assoc($select)) { ?>
                                     <hr class="dropdown-divider">
                                     <a href="#" class="dropdown-item d-flex justify-content-center">

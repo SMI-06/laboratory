@@ -194,7 +194,7 @@ if (isset($_REQUEST['signIn'])) {
                     }
                 }
             } else {
-                echo "0 Record";
+                header("location:../login.php");
             }
         }
     }
