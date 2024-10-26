@@ -23,7 +23,7 @@ $title = "Lab Automation | Profile | Update"
     if ($_GET['id'] == "laboratory") { ?>
         <h3 class="text-dark text-center" style="margin-top: 20px; margin-left:20px; text-transform:uppercase">Request For Laboratory</h3>
         <!-- <div > -->
-        <form action="logics/logic.request.php" method="post" enctype="multipart/form-data">
+        <form action="Logics/logic.request.php" method="post" enctype="multipart/form-data">
             <div class="container py-4">
                 <div class="row">
                     <div class="col-lg-12">
@@ -33,9 +33,24 @@ $title = "Lab Automation | Profile | Update"
                                     <div class="col-sm-3">
                                         <label class="mt-2" for="laboratoryname">Laboratory Name</label>
                                     </div>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-3">
                                         <input type="text" hidden class="form-control" name="userId" value="<?php echo $userDetail['userId'] ?>" id="userId">
                                         <input type="text" class="form-control" name="laboratoryName" placeholder="Enter Laboratory Name" id="laboratoryname">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="mt-2" for="laboratoryname">Branch Number</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="col-sm-12">
+                                            <select class="form-select" name="laboratory-branch" id="laboratory-branch" aria-label="Floating label select example">
+                                                <option selected hidden disabled>Select Branch</option>
+                                                <option value="01">Branch No 01</option>
+                                                <option value="02">Branch No 02</option>
+                                                <option value="03">Branch No 03</option>
+                                                <option value="04">Branch No 04</option>
+                                                <option value="05">Branch No 05</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <hr>
@@ -68,7 +83,7 @@ $title = "Lab Automation | Profile | Update"
                                 <script>
                                     function changeLabType() {
                                         let valueLabType = document.querySelector("#laboratorytype").value;
-                                        if (valueLabType === "00003") {
+                                        if (valueLabType === "00002") {
                                             document.querySelector(".labCustomType").classList.remove("d-none");
                                             document.querySelector(".labCustomType input").setAttribute("required", "required");
                                             document.querySelector(".labelLabCustomType").classList.remove("d-none");

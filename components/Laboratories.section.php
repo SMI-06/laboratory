@@ -21,6 +21,7 @@
     .mycard h5 {
         font-size: 24px;
     }
+
     .button-submit {
         position: relative;
         left: 25%;
@@ -66,7 +67,8 @@
 
             <?php
             require 'includes/config.php';
-            $show_lab = mysqli_query($conn, 'SELECT * FROM `laboratory` JOIN laboratorytype ON laboratory.laboratory_type = laboratorytype.laboratorytype_id;');
+            $show_lab = mysqli_query($conn, 'SELECT * FROM `laboratory`
+            JOIN laboratorytype ON laboratory.laboratory_type = laboratorytype.laboratorytype_id where `status` = "Active"');
             if (mysqli_num_rows($show_lab) > 0) {
                 while ($row = mysqli_fetch_assoc($show_lab)) { ?>
                     <div class="col-md-4 col-sm-6 ">
@@ -80,8 +82,7 @@
                                     echo $row['Laboratory_Type'];
                                 }
                                 ?></p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut erat nec leo lobortis blandit.</p>
-                            <a href="#" class="button-submit btn mt-4">Read More</a>    
+                            <a href="#" class="button-submit btn mt-4">Read More</a>
                         </div>
                     </div>
             <?php    }

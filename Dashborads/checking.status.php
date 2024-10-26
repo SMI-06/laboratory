@@ -30,26 +30,28 @@ $title = "Lab Automation | All Tester"
                         <thead>
                             <tr>
                                 <th>Laboratory Id</th>
+                                <th>Laboratory Branch No</th>
                                 <th>Laboratory Name</th>
                                 <th>Laboratory Address</th>
                                 <th>Laboratory Type</th>
                                 <th>Laboratory City</th>
                                 <th>Laboratory Country</th>
                                 <th>Status</th>
-                                <th>User</th>
-                                <th class="text-center">Action</th>
+                                <!-- <th>User</th> -->
+                                <th class="text-center" colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             <?php
-                            $res = mysqli_query($conn, "SELECT * FROM `laboratory` join laboratorytype ON laboratorytype.laboratorytype_id = laboratory.laboratory_type JOIN cities on cities.id = laboratory.laboratory_city JOIN countries ON countries.Country_Id = laboratory.laboratory_country JOIN signup ON signup.id = laboratory.user_id order by laboratory.laboratory_id asc");
+                            $res = mysqli_query($conn, "SELECT * FROM `laboratory` join laboratorytype ON laboratorytype.laboratorytype_id = laboratory.laboratory_type JOIN cities on cities.id = laboratory.laboratory_city JOIN countries ON countries.Country_Id = laboratory.laboratory_country JOIN signup ON signup.id = laboratory.admin_id order by laboratory.laboratory_id asc");
                             if (mysqli_num_rows($res) > 0) {
                                 while ($row = mysqli_fetch_assoc($res)) {
-                                    if ($row['user_id'] == $userDetail['userId']) {
+                                    if ($row['admin_id'] == $userDetail['userId']) {
                             ?>
                                         <tr>
                                             <th><?php echo $row['laboratory_id'] ?></th>
+                                            <th><?php echo $row['laboratory_branch_number'] ?></th>
                                             <td><?php echo $row['laboratory_name'] ?></td>
                                             <td><?php echo $row['laboratory_address'] ?></td>
                                             <td>
@@ -63,8 +65,10 @@ $title = "Lab Automation | All Tester"
                                             </td>
                                             <td><?php echo $row['city_Name'] ?></td>
                                             <td><?php echo $row['country_Name'] ?></td>
-                                            <td><span class="badge bg-warning mt-1"><?php echo $row['status'] ?> </span></td>
-                                            <td><?php echo $row['userName'] ?></td>
+                                            <td><span class="badge bg-warning mt-1"><?php echo $row['Status'] ?> </span></td>
+                                            <!-- <td><?php echo $row['userName'] ?></td> -->
+                                            <td><a href="#?id=<?php echo $row['laboratory_id'] ?>" class="btn btn-outline-danger rounded-pill "><i class="fas fa-pen"></i></a>
+                                            </td>
                                             <td><a href="#?id=<?php echo $row['laboratory_id'] ?>" class="btn btn-outline-danger rounded-pill "><i class="far fa-trash-alt"></i></a>
                                             </td>
                                         </tr>

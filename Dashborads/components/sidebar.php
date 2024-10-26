@@ -98,7 +98,7 @@
             </div>
         <?php }
         // SUPER ADMIN
-        elseif ($userDetail['Role'] == "Super Admin") { ?>
+        elseif ($userDetail['Role'] == "super admin") { ?>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-map-marker-alt me-2"></i>Add Location</a>
                 <div class="dropdown-menu bg-transparent border-0">
@@ -117,8 +117,44 @@
                     </div>
                 </div>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop-medical me-2"></i>Laboratory</a>
+                    <?php
+                    $query = mysqli_query($conn, "SELECT COUNT(*) as id FROM laboratory WHERE status = 'pending'");
+                    $row = mysqli_fetch_assoc($query);
+                    echo json_encode(['count' => $row['id']]);
+                    ?>
+                    <script>
+                        function checkPendingRequests() {
+                            $.ajax({
+                                url: 'sidebar.php', // URL of your PHP file
+                                method: 'GET',
+                                success: function(data) {
+                                    const result = JSON.parse(data);
+                                    const count = result.count;
+
+                                    // Check if there are pending requests
+                                    if (count > 0) {
+                                        $('#noti').text('You have new requests!').show();
+                                    } else {
+                                        $('#noti').hide();
+                                    }
+                                }
+                            });
+                        }
+
+                        // Check every 10 seconds
+                        setInterval(checkPendingRequests, 10000);
+                    </script>
+
+                    <a href="?seen=true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fa fa-laptop-medical me-2"></i>Laboratory
+                            <span id="noti" class="badge bg-danger"></span> <!-- Notification indicator -->
+                    </a>
                     <div class="dropdown-menu bg-transparent border-0">
+                        <a href="add.laboratory.type.php?id=laboratoryType" class="dropdown-item">Request For Laboratory
+                            <?php
+                            // echo "<span class='badge bg-danger'>" . $labCount . "</span >";
+                            ?>
+                        </a>
                         <a href="add.laboratory.type.php?id=laboratoryType" class="dropdown-item">Add Laboratory Type</a>
                         <a href="show.laboratory.type.php?id=laboratoryType" class="dropdown-item">Show Laboratory Type</a>
                     </div>

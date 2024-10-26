@@ -80,16 +80,19 @@ Region_Name varchar(50)
 
 create table laboratory(
 laboratory_id int(5) ZEROFILL AUTO_INCREMENT PRIMARY KEY,
-laboratory_name varchar(50) unique,
+laboratory_branch_number varchar(50) UNIQUE,
+laboratory_name varchar(50),
 laboratory_address varchar(50),
-laboratory_type int(5) ZEROFILL,    
+laboratory_type int(5) ZEROFILL,  
+laboratory_type_custom varchar(50) UNIQUE,
 laboratory_city int(5) ZEROFILL,
 laboratory_country int(5) ZEROFILL,
+admin_id int(5) ZEROFILL,
 FOREIGN KEY(laboratory_type) REFERENCES laboratorytype(laboratorytype_id),
 FOREIGN KEY(laboratory_city) REFERENCES cities(id),
-FOREIGN KEY(laboratory_country) REFERENCES countries(Country_Id)    
+FOREIGN KEY(admin_id) REFERENCES signup(id),
+FOREIGN KEY(laboratory_country) REFERENCES countries(Country_Id) 
 )
-
 
 	 -----------------
 	| Mails Table: |

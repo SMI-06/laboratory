@@ -12,7 +12,7 @@ if (isset($_SESSION["loginStatus"])) {
     <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
         <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
             <div class="bg-light rounded p-5 p-sm-5 my-4 mx-3">
-
+                <!-- Tester Login -->
                 <?php if (isset($_GET['signUp']) == "tester") { ?>
                     <div class="d-flex align-items-center justify-content-center mb-3">
                         <h3>Tester Sign In</h3>
@@ -92,41 +92,31 @@ if (isset($_SESSION["loginStatus"])) {
                         } ?>
                     </div>
                     <form action="auth/auth.php" method="post">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating mb-1">
                             <input type="text" name="userEmail" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
+                            <label for="floatingInput">User Name / Email address</label>
                         </div>
                         <div>
                             <?php
                             if (isset($_GET["incorrectEmail"])) {
-                                $incorrectEmail = $_GET["incorrectEmail"];
-                                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Oops!</strong> ' . $incorrectEmail . '
-                                    <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>';
+                                $er = $_GET["incorrectEmail"];
+                                echo " <div id='emailHelp' class='form-text text-danger mb-3'>$er.</div>";
                             }
                             ?>
                         </div>
-                        <div class="form-floating mb-4">
+                        <div class="form-floating mb-1 mt-3">
                             <input type="password" name="userPassword" class="form-control" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
                         <div>
                             <?php
                             if (isset($_GET["incorrectPassword"])) {
-                                $incorrectPassword = $_GET["incorrectPassword"];
-                                echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Oops!</strong> ' . $incorrectPassword . '
-                                    <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>';
+                                $er = $_GET["incorrectPassword"];
+                                echo " <div id='emailHelp' class='form-text text-danger mb-3'>$er.</div>";
                             }
                             ?>
                         </div>
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between mt-4">
                             <div class="d-flex justify-content-start">
                                 <a href="login.php?signUp=tester" class="text-dark">Sign In Tester</a>
                             </div>
@@ -134,7 +124,7 @@ if (isset($_SESSION["loginStatus"])) {
                                 <a href="forgot_password.php" class="text-dark">Forgot Password</a>
                             </div>
                         </div>
-                        <button type="submit" name="signIn" class="btn btn-dark  rounded-pill py-3 w-100 mb-4">Sign In</button>
+                        <button type="submit" name="signIn" class="btn btn-dark  rounded-pill py-3 w-100 mb-3">Sign In</button>
                         <p class="text-center mb-0">Don't have an Account? <a href="./signup.php">Sign Up</a></p>
                     </form>
                 <?php } ?>

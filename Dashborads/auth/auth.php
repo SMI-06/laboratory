@@ -9,9 +9,6 @@ if (isset($_REQUEST['signup'])) {
     $userPassword = $_REQUEST['userPassword'];
     $userRole = $_REQUEST['role'];
 
-    // echo $userName . " " . $userEmail . " " . $userPassword . " ". $userRole;
-    // exit();
-
     if (!($userName && $userEmail && $userPassword && $userRole)) {
         $error = "Enter Your Details";
         header("Location: ../signup.php?error=" . urlencode($error));
@@ -42,7 +39,7 @@ if (isset($_REQUEST['signup'])) {
                     // ];
                     // $_SESSION["loginStatus"] = true;
                     // header("location:../../index.php");
-                    
+
                     echo "<script>alert('Sign Up Successful')
                     location.href = '../../index.php';
                     </script>";
@@ -67,8 +64,6 @@ if (isset($_REQUEST['signup'])) {
         }
     }
 }
-
-
 /////////////////////////////  Tester Sign Up Auth 
 
 if (isset($_REQUEST['tester_signup'])) {
@@ -129,67 +124,63 @@ if (isset($_REQUEST['signIn'])) {
             if (mysqli_num_rows($res) > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
                     // Super Admin login Section
-                    if ($row['Role'] == "Super Admin") {
-                        if ($row['userEmail'] == $userEmail) {
+                    if ($row['Role'] == "super admin") {
+                        if ($row['userEmail'] === $userEmail || $row['userName'] === $userEmail) {
                             if ($row['userPassword'] == $userPassword) {
                                 $_SESSION['userDetails'] = [
                                     'userId' => $row['id'],
                                     'userName' => $row['userName'],
                                     'userEmail' => $row['userEmail'],
-                                    'userCNIC' => $row['userCNIC'],
+                                    // 'userCNIC' => $row['userCNIC'],
                                     'Role' => $row['Role'],
                                 ];
                                 $_SESSION["loginStatus"] = true;
                                 header("location:../../index.php");
                             } else {
-
-                                echo "Password Wrong";
+                                header("location:../login.php?er=Your Password is wrong");
                             }
                         } else {
-                            echo "Email Wrong";
+                            header("location:../login.php?er=Your User Name Or Email is wrong");
                         }
                     }
                     // Admin Login Section
                     else if ($row['Role'] == "admin") {
-                        if ($row['userEmail'] == $userEmail) {
+                        if ($row['userEmail'] === $userEmail || $row['userName'] === $userEmail ) {
                             if ($row['userPassword'] == $userPassword) {
                                 $_SESSION['userDetails'] = [
                                     'userId' => $row['id'],
                                     'userName' => $row['userName'],
                                     'userEmail' => $row['userEmail'],
-                                    'userCNIC' => $row['userCNIC'],
+                                    // 'userCNIC' => $row['userCNIC'],
                                     'Role' => $row['Role'],
                                 ];
                                 $_SESSION["loginStatus"] = true;
                                 header("location:../../index.php");
                             } else {
-
-                                echo "Password Wrong";
+                                header("location:../login.php?er=Your Password is wrong");
                             }
                         } else {
-                            echo "Email Wrong";
+                            header("location:../login.php?er=Your User Name Or Email is wrong");
                         }
                     }
                     // User Login Section
                     else {
-                        if ($row['userEmail'] == $userEmail) {
+                        if ($row['userEmail'] === $userEmail || $row['userName'] === $userEmail) {
                             if ($row['userPassword'] == $userPassword) {
                                 $_SESSION['userDetails'] = [
                                     'userId' => $row['id'],
                                     'userName' => $row['userName'],
                                     'userEmail' => $row['userEmail'],
-                                    'userCNIC' => $row['userCNIC'],
+                                    // 'userCNIC' => $row['userCNIC'],
                                     'Role' => $row['Role'],
                                 ];
                                 $_SESSION["loginStatus"] = true;
                                 header("location:../../index.php");
                             } else {
-                                header("location:../login.php");
-                                echo "Password Wrong";
+                                header("location:../login.php?er=Your Password is wrong");
                             }
                         } else {
-                            header("location:../login.php");
-                            echo "Email Wrong";
+                            header("location:../login.php?er=Your User Name Or Email is wrong");
                         }
                     }
                 }
@@ -242,6 +233,3 @@ if (isset($_REQUEST['testerSignIn'])) {
         }
     }
 }
-
-
-?>

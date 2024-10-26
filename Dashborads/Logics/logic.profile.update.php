@@ -2,6 +2,7 @@
 session_start();
 require("../includes/config.php");
 
+// Admin Or User Update Profile
 if (isset($_REQUEST['save'])) {
     $userId = $_REQUEST['userId'];
     // echo $userId; exit();
@@ -37,6 +38,29 @@ if (isset($_REQUEST['save'])) {
     }
 }
 
+// Admin Or user Edit Profile 
+if (isset($_REQUEST['editProfile'])) {
+    $userId = $_REQUEST['userId'];
+    $userFullName = $_REQUEST['userFullName'];
+    $userReligion = $_REQUEST['userReligion'];
+    $userPhone = $_REQUEST['userPhone'];
+    $userGender = $_REQUEST['userGender'];
+    $userAddress = $_REQUEST['userAddress'];
+    $userCity = $_REQUEST['userCity'];
+    $userCountry = $_REQUEST['userCountry'];
+    $userPass = $_REQUEST['userPass'];
+    if (!($userFullName && $userReligion && $userPhone && $userGender && $userAddress && $userCity && $userCountry)) {
+        echo "<script>alert('Enter All Fields')</script>";
+    } else {
+        $profileData = "UPDATE `signup` SET `userFullName`='$userFullName',`userPhone`='$userPhone',`userReligion`='$userReligion',`userGender`='$userGender',`userCity`='$userCity',`userCountry`='$userCountry',`userAddress`='$userAddress',`userPassword`='$userPass' WHERE `id` = $userId";
+        // var_dump($profileData); exit();
+        $res = mysqli_query($conn, $profileData);
+        echo "<script>alert('Profile Updated')
+            location.href = '../profile.php'
+            </script>";
+    }
+}
+
 // Tester Update Profile
 
 if (isset($_REQUEST['tester_profile_save'])) {
@@ -55,7 +79,7 @@ if (isset($_REQUEST['tester_profile_save'])) {
         $uploadDegreeImage = move_uploaded_file($AttachYourLatestDegreeImageTmpName, $AttachYourLatestDegreeImagepath);
         if ($uploadDegreeImage) {
             $testerNameCode = str_split($testerUserName);
-            $testerCode = $testerNameCode[2] ."-". $testerId;
+            $testerCode = $testerNameCode[2] . "-" . $testerId;
             // echo $testerCode;exit();
             $testerFullName = $_REQUEST['testerFullName'];
             $testerCNIC = $_REQUEST['testerCnic'];
@@ -81,14 +105,14 @@ if (isset($_REQUEST['tester_profile_save'])) {
 
                 // /////////////////// Testing point testing krni hai.............
 
-                $query = "UPDATE `signup_tester` SET `Code` = '$testerCode' , `TesterFullName`='$testerFullName',`Testerimage`='".$testerImage['name']."',`TesterCNIC`='$testerCNIC',`TesterPhone`='$testerPhone',`TesterReligion`='$testerReligion',`TesterGender`='$testerGender',`TesterCity`='$testerCity',`TesterCountry`='$testerCountry',`TesterAddress`='$testerAddress',`Education`='$testerEducation',`Subject`='$testerSubject',`Institute`='$testerInstitute',`Latest Degree`='".$AttachYourLatestDegree['name']."', `Admin_Id`='$admin_Id' WHERE `TesterId` = $testerId";
-                
-                
-                var_dump($query); 
-                                // exit();
+                $query = "UPDATE `signup_tester` SET `Code` = '$testerCode' , `TesterFullName`='$testerFullName',`Testerimage`='" . $testerImage['name'] . "',`TesterCNIC`='$testerCNIC',`TesterPhone`='$testerPhone',`TesterReligion`='$testerReligion',`TesterGender`='$testerGender',`TesterCity`='$testerCity',`TesterCountry`='$testerCountry',`TesterAddress`='$testerAddress',`Education`='$testerEducation',`Subject`='$testerSubject',`Institute`='$testerInstitute',`Latest Degree`='" . $AttachYourLatestDegree['name'] . "', `Admin_Id`='$admin_Id' WHERE `TesterId` = $testerId";
+
+
+                var_dump($query);
+                // exit();
                 $insert_tester = mysqli_query($conn, $query);
-                var_dump($insert_tester); 
-                                exit();
+                var_dump($insert_tester);
+                exit();
                 // /////////////////////////////
 
                 $insert_tester = mysqli_query($conn, "INSERT INTO `signup_tester`(`TesterFullName`, `Testerimage`, `TesterCNIC`, `TesterPhone`, `TesterReligion`, `TesterGender`, `TesterCity`, `TesterCountry`, `TesterAddress`, `Education`, `Subject`, `Institute`, `Latest Degree`, `Admin_Id`) VALUES ('$testerFullName','$testerImage[name]','$testerCNIC','$testerPhone','$testerReligion','$testerGender','$testerCity','$testerCountry','$testerAddress','$testerEducation','$testerSubject','$testerInstitute','$AttachYourLatestDegree[name]','$admin_Id')");
