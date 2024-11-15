@@ -378,9 +378,7 @@ $title = "Lab Automation | Profile | Update"
 <!-- Footer Start -->
 <?php require("components/footer.php"); ?>
 <!-- Footer End -->
-
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+ 
 </div>
 
 <?php require("includes/footer.inc.php"); ?>

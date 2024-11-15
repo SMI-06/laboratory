@@ -71,9 +71,24 @@
                     <a href="mail.php?show_mail_id=show_mail" class="dropdown-item">Show Mails</a>
                 </div>
             </div>
-        <?php }
+            <?php }
         // ADMIN
-        else if ($userDetail['Role'] == "admin") { ?>
+        else if ($userDetail['Role'] == "admin") {
+            $nav_item = mysqli_query($conn, "SELECT * FROM `laboratory` where `status` = 'Approved'");
+            if ($nav_item) { 
+                ?>
+                <div class="nav-item dropdown">
+                    <a href="?seen=true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fa fa-laptop-medical me-2"></i>Laboratory
+                    </a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a href="show.laboratory.php?id=alab&st=approved" class="dropdown-item">Approved Laboratories
+                        </a>
+                        <a href="add.laboratory.type.php?id=alab&st=rejected" class="dropdown-item">Rejected Laboratories</a>
+                        <!-- <a href="show.laboratory.php?id=laboratoryType" class="dropdown-item">Show Laboratory Type</a> -->
+                    </div>
+                </div>
+            <?php } ?>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link  dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-pager me-2"></i>Request</a>
                 <div class="dropdown-menu bg-transparent border-0">
@@ -117,46 +132,15 @@
                     </div>
                 </div>
                 <div class="nav-item dropdown">
-                    <?php
-                    $query = mysqli_query($conn, "SELECT COUNT(*) as id FROM laboratory WHERE status = 'pending'");
-                    $row = mysqli_fetch_assoc($query);
-                    echo json_encode(['count' => $row['id']]);
-                    ?>
-                    <script>
-                        function checkPendingRequests() {
-                            $.ajax({
-                                url: 'sidebar.php', // URL of your PHP file
-                                method: 'GET',
-                                success: function(data) {
-                                    const result = JSON.parse(data);
-                                    const count = result.count;
-
-                                    // Check if there are pending requests
-                                    if (count > 0) {
-                                        $('#noti').text('You have new requests!').show();
-                                    } else {
-                                        $('#noti').hide();
-                                    }
-                                }
-                            });
-                        }
-
-                        // Check every 10 seconds
-                        setInterval(checkPendingRequests, 10000);
-                    </script>
-
                     <a href="?seen=true" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                         <i class="fa fa-laptop-medical me-2"></i>Laboratory
-                            <span id="noti" class="badge bg-danger"></span> <!-- Notification indicator -->
+                        <span id="noti" class="badge bg-danger"></span> <!-- Notification indicator -->
                     </a>
                     <div class="dropdown-menu bg-transparent border-0">
-                        <a href="add.laboratory.type.php?id=laboratoryType" class="dropdown-item">Request For Laboratory
-                            <?php
-                            // echo "<span class='badge bg-danger'>" . $labCount . "</span >";
-                            ?>
+                        <a href="show.laboratory.php?id=RFL" class="dropdown-item">Request For Laboratory
                         </a>
                         <a href="add.laboratory.type.php?id=laboratoryType" class="dropdown-item">Add Laboratory Type</a>
-                        <a href="show.laboratory.type.php?id=laboratoryType" class="dropdown-item">Show Laboratory Type</a>
+                        <a href="show.laboratory.php?id=laboratoryType" class="dropdown-item">Show Laboratory Type</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">

@@ -11,9 +11,8 @@
 <section class="key-features bg-white department">
     <div class="container">
         <div class="inner-title">
-
-            <h2 class="heading">Our Services</h2>
-            <p class="tagline">Take a look at some of our key features</p>
+            <h2 class="heading">Our Test</h2>
+            <p class="tagline">We are providing this test on 50% off</p>
         </div>
 
         <div class="row">

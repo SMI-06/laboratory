@@ -1,6 +1,6 @@
-<?php 
+<?php
 require("includes/config.php"); ?>
- 
+
 <?php
 require("auth/auth.check.php");
 if (isset($_SESSION['userDetails'])) {
@@ -11,7 +11,7 @@ if (isset($_SESSION['userDetails'])) {
 $title = "Lab Automation | Dashboard"
 ?>
 
-<?php  require("includes/header.inc.php"); ?>
+<?php require("includes/header.inc.php"); ?>
 
 <!-- Navbar Start -->
 <?php require("components/navbar.php"); ?>

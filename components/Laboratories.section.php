@@ -68,7 +68,7 @@
             <?php
             require 'includes/config.php';
             $show_lab = mysqli_query($conn, 'SELECT * FROM `laboratory`
-            JOIN laboratorytype ON laboratory.laboratory_type = laboratorytype.laboratorytype_id where `status` = "Active"');
+            JOIN laboratorytype ON laboratory.laboratory_type = laboratorytype.laboratorytype_id where `status` = "1"');
             if (mysqli_num_rows($show_lab) > 0) {
                 while ($row = mysqli_fetch_assoc($show_lab)) { ?>
                     <div class="col-md-4 col-sm-6 ">
@@ -82,7 +82,12 @@
                                     echo $row['Laboratory_Type'];
                                 }
                                 ?></p>
-                            <a href="#" class="button-submit btn mt-4">Read More</a>
+                            <p><?php
+                                    $parts = explode("-", $row['laboratory_branch_number']);
+                                    $branch_no = "Branch - ".$parts[2]; 
+                                    echo $branch_no;
+                                ?></p>
+                            <a href="Lab.detail.php?id=<?php echo $row['laboratory_id']?>&br=<?php echo $row['laboratory_branch_number']?>" class="button-submit btn mt-4">Read More</a>
                         </div>
                     </div>
             <?php    }

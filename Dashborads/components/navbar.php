@@ -80,6 +80,7 @@ if (isset($_SESSION['userDetails'])) {
                                             <h6 class="fw-normal mb-0"><?php echo $row['Topic'] . " | <br> By " . $row['userName'] . "| <br> "; ?></h6>
                                             <!-- <small id="liveTime"></small> -->
                                             <small>
+                                            See All Notifictaion
                                                 <?php
                                                 date_default_timezone_set('Asia/Karachi');
                                                 $notificationTime = strtotime($row['notificationTime']);
@@ -151,7 +152,7 @@ if (isset($_SESSION['userDetails'])) {
                 </a>
                 <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0" style="max-height: 250px; overflow-y: auto;">
                     <a href="#" class="btn"><span class="bg-info text-white p-1 rounded-3 shadow d-inline-block">See All Notifictaion</span> </a>
-
+                    <?php echo $currentTime ?>
                     <!-- <hr class="dropdown-divider"> -->
                     <a href="#" class="dropdown-item">
                         <h6 class="fw-normal mb-0">
@@ -169,6 +170,7 @@ if (isset($_SESSION['userDetails'])) {
                                             date_default_timezone_set('Asia/Karachi');
                                             $notificationTime = strtotime($row['notificationTime']);
                                             $currentTime = time();
+                                            echo $currentTime;
                                             $timeDiff = $currentTime - $notificationTime;
 
                                             if ($timeDiff < 60) {

@@ -36,6 +36,7 @@ $title = "Lab Automation | All Tester"
                                 <th>Laboratory Type</th>
                                 <th>Laboratory City</th>
                                 <th>Laboratory Country</th>
+                                <th>Date / Time</th>
                                 <th>Status</th>
                                 <!-- <th>User</th> -->
                                 <th class="text-center" colspan="2">Action</th>
@@ -44,7 +45,10 @@ $title = "Lab Automation | All Tester"
                         <tbody>
 
                             <?php
-                            $res = mysqli_query($conn, "SELECT * FROM `laboratory` join laboratorytype ON laboratorytype.laboratorytype_id = laboratory.laboratory_type JOIN cities on cities.id = laboratory.laboratory_city JOIN countries ON countries.Country_Id = laboratory.laboratory_country JOIN signup ON signup.id = laboratory.admin_id order by laboratory.laboratory_id asc");
+                            $res = mysqli_query($conn, "SELECT * FROM `laboratory` join laboratorytype ON laboratorytype.laboratorytype_id = laboratory.laboratory_type 
+                            JOIN cities on cities.id = laboratory.laboratory_city JOIN countries ON countries.Country_Id = laboratory.laboratory_country 
+                            JOIN signup ON signup.id = laboratory.admin_id 
+                            WHERE admin_id = " . $userDetail['userId'] . " order by laboratory.laboratory_id ASC;");
                             if (mysqli_num_rows($res) > 0) {
                                 while ($row = mysqli_fetch_assoc($res)) {
                                     if ($row['admin_id'] == $userDetail['userId']) {
@@ -65,11 +69,15 @@ $title = "Lab Automation | All Tester"
                                             </td>
                                             <td><?php echo $row['city_Name'] ?></td>
                                             <td><?php echo $row['country_Name'] ?></td>
-                                            <td><span class="badge bg-warning mt-1"><?php echo $row['Status'] ?> </span></td>
-                                            <!-- <td><?php echo $row['userName'] ?></td> -->
+                                            <td><?php echo $row['Time'] ?></td>
+                                            <td><span class="badge <?php echo (($row['status'] === "1") ? "bg-success" : 
+                                            (($row['status'] === "Pending") ? "bg-warning" : "bg-danger")); ?> 
+                                            mt-1" id="status">
+                                            <?php echo (($row['status'] === "1") ? "Approved" : 
+                                            (($row['status'] === "Pending") ? "Pending" : "Rejected")); ?> </span></td>
                                             <td><a href="#?id=<?php echo $row['laboratory_id'] ?>" class="btn btn-outline-danger rounded-pill "><i class="fas fa-pen"></i></a>
                                             </td>
-                                            <td><a href="#?id=<?php echo $row['laboratory_id'] ?>" class="btn btn-outline-danger rounded-pill "><i class="far fa-trash-alt"></i></a>
+                                            <td><a href="?id=<?php echo $row['laboratory_id'] ?>" class="btn btn-outline-danger rounded-pill "><i class="far fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                     <?php } else { ?>
