@@ -35,7 +35,7 @@
                             $query = mysqli_query($conn, "SELECT count(*) as id 
                             FROM laboratory where `status` = '1' & admin_id = ". $userDetail['userId']);
                             $line = mysqli_fetch_assoc($query) ?>
-                            <h6 class="mb-0"><?php echo $line['id'] . " Admin Id " . $userDetail['userId'] ?></h6>
+                            <h6 class="mb-0"><?php echo $line['id'] ?></h6>
                         </div>
                     </div>
                 </div>

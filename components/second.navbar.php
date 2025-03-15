@@ -11,6 +11,7 @@
         color: white;
         border-radius: 10px;
         display: block;
+        margin-left: 8em;
         border: 0px;
         font-weight: 700;
         box-shadow: 0px 0px 14px -7px #f09819;
@@ -35,7 +36,7 @@
 <div id="nav-head" class="header-nav bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+            <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img" style="margin-right: ;">
                 <img src="assets/images/logo.png" alt="">
                 <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
             </div>
@@ -43,7 +44,7 @@
                 <ul>
                     <li><a class="text-info navlinks" href="index.php">Home</a></li>
                     <li><a class="text-info navlinks" href="about_us.php">About Us</a></li>
-                    <li><a class="text-info navlinks" href="#">Products</a></li>
+                    <!-- <li><a class="text-info navlinks" href="#">Products</a></li> -->
                     <li><a class="text-info navlinks" href="Laboratories.php">Laboratories</a></li>
                     <li><a class="text-info navlinks" href="#">Gallery</a></li>
                     <li><a class="text-info navlinks" href="contact.php">Contact Us</a></li>
@@ -65,8 +66,8 @@
                             <a class="dropdown-item" href="Dashborads/">Dashboard</a>
                             <a class="dropdown-item" href="Dashborads/profile.php">Profile</a>
                             <a class="dropdown-item" href="Dashborads/auth/auth.logout.php">Logout</a>
-                            <!-- Add more dropdown items as needed -->
-                        </div>
+                            <!-+- Add more dropdown items as needed -->
+                        </div>*
                     </div>
                 <?php } else if (isset($testerDetails)) { ?>
                     <div class="dropdown">

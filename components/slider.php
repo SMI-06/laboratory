@@ -3,7 +3,7 @@
     color: #2B7DDF;
 }
 .paragraph{
-    color: gray;
+    color: #2B7DDF;
 }
 </style>
 
