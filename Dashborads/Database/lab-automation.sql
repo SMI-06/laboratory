@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2024 at 08:15 PM
+-- Generation Time: Oct 05, 2025 at 08:46 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,53 @@ SET time_zone = "+00:00";
 --
 -- Database: `lab-automation`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `clearTable` (IN `tableName` VARCHAR(255))   BEGIN
+SET @tableName = Null;
+If tableName = 'Cities' THEN 
+	SET @tableName = "Truncate Table cities";
+ELSEIF tableName = 'countries' THEN
+	SET @tableName = "Truncate Table countries";
+ELSEIF tableName = 'laboratory' THEN
+	SET @tableName = "Truncate Table laboratory";
+ELSEIF tableName = 'laboratorytype' THEN
+	SET @tableName = "Truncate Table laboratorytype";
+ELSEIF tableName = 'mails' THEN
+	SET @tableName = "Truncate Table mails";
+ELSEIF tableName = 'notification' THEN
+	SET @tableName = "Truncate Table notification";
+ELSEIF tableName = 'Products' THEN
+	SET @tableName = "Truncate table products";
+ELSEIF tableName = 'province' THEN
+	SET @tableName = "Truncate table province";
+ELSEIF tableName = 'regions' THEN
+	SET @tableName = "truncate table regions";
+ELSEIF tableName = 'signup' THEN
+	Set @tableName  = "truncate table signup";
+ELSEIF tableName = 'testing_product' THEN
+	SET @tableName = "truncate table testing_product";
+ELSEIF tableName = 'All' THEN
+	SET @tableName = "TRUNCATE TABLE Cities; TRUNCATE TABLE countries; TRUNCATE TABLE laboratory; 
+                          TRUNCATE TABLE laboratorytype; TRUNCATE TABLE mails; TRUNCATE TABLE notification; 
+                          TRUNCATE TABLE products; TRUNCATE TABLE province; TRUNCATE TABLE regions; 
+                          TRUNCATE TABLE signup; TRUNCATE TABLE testing_product";
+ELSE
+	Set @tableName = NULL ;
+    
+END IF;
+
+     IF @tableName IS NOT NULL THEN
+        PREPARE stmt FROM @tableName;
+        EXECUTE stmt;
+        DEALLOCATE PREPARE stmt;
+    END IF;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -39,7 +86,8 @@ CREATE TABLE `cities` (
 --
 
 INSERT INTO `cities` (`id`, `city_Name`, `Province_Id`, `Country_Id`) VALUES
-(00001, 'Karachi', 00000, 00000);
+(00001, 'Karachi', 00001, 00001),
+(00002, 'Lahore', 00002, 00001);
 
 -- --------------------------------------------------------
 
@@ -58,7 +106,8 @@ CREATE TABLE `countries` (
 --
 
 INSERT INTO `countries` (`Country_Id`, `country_Name`, `regions_id`) VALUES
-(00000, 'Pakistan', 00001);
+(00001, 'Pakistan', 00001),
+(00002, 'China', 00001);
 
 -- --------------------------------------------------------
 
@@ -68,15 +117,24 @@ INSERT INTO `countries` (`Country_Id`, `country_Name`, `regions_id`) VALUES
 
 CREATE TABLE `laboratory` (
   `laboratory_id` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `laboratory_branch_number` varchar(50) DEFAULT NULL,
   `laboratory_name` varchar(50) DEFAULT NULL,
   `laboratory_address` varchar(50) DEFAULT NULL,
   `laboratory_type` int(5) UNSIGNED ZEROFILL DEFAULT NULL,
-  `laboratory_type_custom` varchar(100) NOT NULL,
+  `laboratory_type_custom` varchar(50) DEFAULT NULL,
   `laboratory_city` int(5) UNSIGNED ZEROFILL DEFAULT NULL,
   `laboratory_country` int(5) UNSIGNED ZEROFILL DEFAULT NULL,
-  `status` varchar(10) DEFAULT 'Pending',
-  `user_id` int(5) UNSIGNED ZEROFILL DEFAULT NULL
+  `status` varchar(25) DEFAULT 'Pending',
+  `admin_id` int(5) UNSIGNED ZEROFILL DEFAULT NULL,
+  `Time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `laboratory`
+--
+
+INSERT INTO `laboratory` (`laboratory_id`, `laboratory_branch_number`, `laboratory_name`, `laboratory_address`, `laboratory_type`, `laboratory_type_custom`, `laboratory_city`, `laboratory_country`, `status`, `admin_id`, `Time`) VALUES
+(00001, 'Shah Medical Lab-Br-01', 'Shah Medical Lab', 'SMI SOFTS', 00003, '', 00001, 00001, '1', 00002, '2024-10-30 14:37:42');
 
 -- --------------------------------------------------------
 
@@ -94,7 +152,9 @@ CREATE TABLE `laboratorytype` (
 --
 
 INSERT INTO `laboratorytype` (`laboratorytype_id`, `Laboratory_Type`) VALUES
-(00000, 'Electrical Type');
+(00001, 'Other  Type'),
+(00002, 'Electrical Type'),
+(00003, 'Medical Type');
 
 -- --------------------------------------------------------
 
@@ -108,6 +168,20 @@ CREATE TABLE `mails` (
   `subject` varchar(50) DEFAULT NULL,
   `Message` varchar(255) DEFAULT NULL,
   `userId` int(5) UNSIGNED ZEROFILL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification`
+--
+
+CREATE TABLE `notification` (
+  `Id` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `Topic` varchar(50) DEFAULT NULL,
+  `User_Id` int(5) UNSIGNED ZEROFILL DEFAULT NULL,
+  `notificationTime` time DEFAULT NULL,
+  `notificationdate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -144,7 +218,8 @@ CREATE TABLE `province` (
 --
 
 INSERT INTO `province` (`province_Id`, `province_Name`, `Country_Id`) VALUES
-(00000, 'Sindh', 00000);
+(00001, 'Sindh', 00001),
+(00002, 'Punjab', 00001);
 
 -- --------------------------------------------------------
 
@@ -162,7 +237,7 @@ CREATE TABLE `regions` (
 --
 
 INSERT INTO `regions` (`id`, `Region_Name`) VALUES
-(00001, 'Asia');
+(00001, 'Aisa');
 
 -- --------------------------------------------------------
 
@@ -172,12 +247,12 @@ INSERT INTO `regions` (`id`, `Region_Name`) VALUES
 
 CREATE TABLE `signup` (
   `id` int(5) UNSIGNED ZEROFILL NOT NULL,
-  `userName` varchar(20) NOT NULL,
-  `userEmail` varchar(50) NOT NULL,
+  `userName` varchar(20) DEFAULT NULL,
+  `userEmail` varchar(50) DEFAULT NULL,
   `userFullName` varchar(50) DEFAULT NULL,
   `userimage` varchar(50) DEFAULT NULL,
-  `userCNIC` varchar(20) NOT NULL,
-  `userPhone` varchar(15) NOT NULL,
+  `userCNIC` varchar(20) DEFAULT NULL,
+  `userPhone` varchar(15) DEFAULT NULL,
   `userReligion` varchar(20) DEFAULT NULL,
   `userGender` varchar(10) DEFAULT NULL,
   `userCity` varchar(30) DEFAULT NULL,
@@ -193,7 +268,8 @@ CREATE TABLE `signup` (
 --
 
 INSERT INTO `signup` (`id`, `userName`, `userEmail`, `userFullName`, `userimage`, `userCNIC`, `userPhone`, `userReligion`, `userGender`, `userCity`, `userCountry`, `userAddress`, `userPassword`, `Role`, `Status`) VALUES
-(00001, 'Ibraheem', 'smibraheem06@gmail.com', 'Syed Muhammad Ibraheem', 'ibraheem2.jpg', '42201-1234567-8', '03330240594', 'Islam', 'Male', 'Karachi', 'Pakistan', 'MC-1335(A) Green Town, Karachi', 'smi@0333', 'Super Admin', 'Active');
+(00001, 'SMI-16', 'ibraheem@gmail.com', 'Syed Muhammad Ibraheem', '20200615_165321.jpg', '4220197145053', '03330240594', 'Islam', 'Male', 'Karachi', 'Pakistan', 'SMI SOFTS, Green Town', 'ibraheem', 'super admin', 'Active'),
+(00002, 'SMI', 'smi@gmail.com', 'S.M.Ibraheem', '20200615_164343.jpg', '4220197145054', '03010247722', 'Islam', 'Male', 'Lahore', 'Pakistan', 'SMI Softs, Green Town, Azeem Pura', 'ibraheem@16', 'admin', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -239,11 +315,11 @@ ALTER TABLE `countries`
 --
 ALTER TABLE `laboratory`
   ADD PRIMARY KEY (`laboratory_id`),
-  ADD UNIQUE KEY `laboratory_name` (`laboratory_name`),
+  ADD UNIQUE KEY `laboratory_branch_number` (`laboratory_branch_number`),
   ADD KEY `laboratory_type` (`laboratory_type`),
   ADD KEY `laboratory_city` (`laboratory_city`),
-  ADD KEY `laboratory_country` (`laboratory_country`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `admin_id` (`admin_id`),
+  ADD KEY `laboratory_country` (`laboratory_country`);
 
 --
 -- Indexes for table `laboratorytype`
@@ -257,6 +333,13 @@ ALTER TABLE `laboratorytype`
 ALTER TABLE `mails`
   ADD PRIMARY KEY (`mail_id`),
   ADD KEY `userId` (`userId`);
+
+--
+-- Indexes for table `notification`
+--
+ALTER TABLE `notification`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `User_Id` (`User_Id`);
 
 --
 -- Indexes for table `products`
@@ -302,13 +385,25 @@ ALTER TABLE `testing_product`
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `Country_Id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `laboratory`
 --
 ALTER TABLE `laboratory`
-  MODIFY `laboratory_id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `laboratory_id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `laboratorytype`
+--
+ALTER TABLE `laboratorytype`
+  MODIFY `laboratorytype_id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mails`
@@ -317,10 +412,22 @@ ALTER TABLE `mails`
   MODIFY `mail_id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `notification`
+--
+ALTER TABLE `notification`
+  MODIFY `Id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `province`
+--
+ALTER TABLE `province`
+  MODIFY `province_Id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `regions`
@@ -332,7 +439,7 @@ ALTER TABLE `regions`
 -- AUTO_INCREMENT for table `signup`
 --
 ALTER TABLE `signup`
-  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `testing_product`
@@ -363,14 +470,20 @@ ALTER TABLE `countries`
 ALTER TABLE `laboratory`
   ADD CONSTRAINT `laboratory_ibfk_1` FOREIGN KEY (`laboratory_type`) REFERENCES `laboratorytype` (`laboratorytype_id`),
   ADD CONSTRAINT `laboratory_ibfk_2` FOREIGN KEY (`laboratory_city`) REFERENCES `cities` (`id`),
-  ADD CONSTRAINT `laboratory_ibfk_3` FOREIGN KEY (`laboratory_country`) REFERENCES `countries` (`Country_Id`),
-  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `signup` (`id`);
+  ADD CONSTRAINT `laboratory_ibfk_3` FOREIGN KEY (`admin_id`) REFERENCES `signup` (`id`),
+  ADD CONSTRAINT `laboratory_ibfk_4` FOREIGN KEY (`laboratory_country`) REFERENCES `countries` (`Country_Id`);
 
 --
 -- Constraints for table `mails`
 --
 ALTER TABLE `mails`
   ADD CONSTRAINT `mails_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `signup` (`id`);
+
+--
+-- Constraints for table `notification`
+--
+ALTER TABLE `notification`
+  ADD CONSTRAINT `notification_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `signup` (`id`);
 
 --
 -- Constraints for table `products`
