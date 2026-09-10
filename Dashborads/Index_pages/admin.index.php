@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-sm-6 col-xl-3">
                     <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
-                        <i class="fas fa-exclamation fa-3x text-dark"></i>
+                        <i class="fas fa-ban fa-3x text-dark"></i>
                         <!-- <i class="fa fa-laptop-medical "></i> -->
                         <div class="ms-3 text-dark">
                             <p class="mb-2" style="white-space: nowrap !important;">Disable Laboratories</p>
@@ -79,7 +79,7 @@
                 <div class="col-sm-6 col-xl-3">
                     <a href="admin.all.php">
                         <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fas fa-thumbs-up fa-3x text-dark"></i>
+                            <i class="fas fa-square-check fa-3x text-dark"></i>
                             <div class="ms-3">
                                 <p class="mb-2 text-dark">Pass Products</p>
                                 <?php
@@ -97,11 +97,52 @@
                 <div class="col-sm-6 col-xl-3">
                     <a href="tester.all.php">
                         <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fas fa-thumbs-down fa-3x text-dark"></i>
+                            <i class="fas fa-ban fa-3x text-dark"></i>
                             <div class="ms-3">
                                 <p class="mb-2 text-dark">Failed Products</p>
                                 <?php
                                 $query = mysqli_query($conn, "select count(*) as id from signup where Role = 'Tester'");
+                                if (mysqli_num_rows($query) > 0) {
+                                    $row = mysqli_fetch_assoc($query) ?>
+                                    <h6 class="mb-0"><?php echo $row['id'] ?></h6>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- //////////////  Employee ////////////// -->
+            <div class="row g-4 mt-2">
+                <h4 class="heading">Employees </h4>
+                <div class="col-sm-6 col-xl-6">
+                    <a href="users.all.php">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fas fa-users fa-3x text-dark"></i>
+                            <div class="ms-3">
+                                <p class="mb-2 text-dark">Active User</p>
+                                <?php
+                                $query = mysqli_query($conn, "select count(*) as id from signup");
+                                if (mysqli_num_rows($query) > 0) {
+                                    $row = mysqli_fetch_assoc($query) ?>
+                                    <h6 class="mb-0"><?php echo $row['id'] ?></h6>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-xl-6">
+                    <a href="admin.all.php">
+                        <div class="mycard shadow rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fas fa-user-slash fa-3x text-dark"></i>
+                            <div class="ms-3">
+                                <p class="mb-2 text-dark">Resigned User</p>
+                                <?php
+                                $query = mysqli_query($conn, "select count(*) as id from signup where Role = 'Admin'");
                                 if (mysqli_num_rows($query) > 0) {
                                     $row = mysqli_fetch_assoc($query) ?>
                                     <h6 class="mb-0"><?php echo $row['id'] ?></h6>

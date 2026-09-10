@@ -73,7 +73,7 @@
             </div>
             <?php }
         // ADMIN
-        else if ($userDetail['Role'] == "admin") {
+        else if ($userDetail['Role'] == "Admin") {
             $nav_item = mysqli_query($conn, "SELECT * FROM `laboratory` where `status` = 'Approved'");
             if ($nav_item) { 
                 ?>

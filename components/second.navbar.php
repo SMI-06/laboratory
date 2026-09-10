@@ -1,17 +1,13 @@
 <style>
     .button-signin {
-        /* height: 50px; */
-        /* margin-top: 50px; */
-        /* padding: 15px 30px; */
-        width: 100%;
+        width: 80%;
         text-align: center;
         text-transform: uppercase;
         transition: 0.5s;
         background-size: 200% auto;
         color: white;
-        border-radius: 10px;
         display: block;
-        margin-left: 8em;
+        /* margin-left: 8em; */
         border: 0px;
         font-weight: 700;
         box-shadow: 0px 0px 14px -7px #f09819;
@@ -32,11 +28,24 @@
     .button-signin:active {
         transform: scale(0.95);
     }
+
+    .dp{
+        background-color: #f8f9fa;
+    }
+    .dp .dropdown-item{
+        color: #5bc0de;
+    }
+     .dp .dropdown-item:hover{
+         background-color: #5bc0de;
+        color: #f8f9fa;
+    }
+
+
 </style>
 <div id="nav-head" class="header-nav bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img" style="margin-right: ;">
+            <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
                 <img src="assets/images/logo.png" alt="">
                 <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
             </div>
@@ -62,12 +71,12 @@
                         <button class="button-signin btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php echo $userdetails['userName'] ?>
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu dp" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="Dashborads/">Dashboard</a>
                             <a class="dropdown-item" href="Dashborads/profile.php">Profile</a>
                             <a class="dropdown-item" href="Dashborads/auth/auth.logout.php">Logout</a>
-                            <!-+- Add more dropdown items as needed -->
-                        </div>*
+                            <!-- <!-+- Add more dropdown items as needed -->
+                        </div>
                     </div>
                 <?php } else if (isset($testerDetails)) { ?>
                     <div class="dropdown">
@@ -84,7 +93,7 @@
                         </div>
                     </div>
                 <?php } else { ?>
-                    <a href="Dashborads/login.php" class="button-signin btn">Sign In</a>
+                    <a href="Dashborads/login.php" class="button-signin btn" style="margin-right: 20px">Sign In</a>
                 <?php }
                 ?>
             </div>

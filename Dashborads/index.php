@@ -37,7 +37,7 @@ $title = "Lab Automation | Dashboard"
         require("Index_pages/tester.index.php");
     }
     //  Admin Dashborad
-    else if ($userDetail['Role'] == "admin") {
+    else if ($userDetail['Role'] == "Admin") {
         require("Index_pages/admin.index.php");
     }
     //  Tester Dashborad

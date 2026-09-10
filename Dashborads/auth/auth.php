@@ -192,7 +192,7 @@ if (isset($_REQUEST['signIn'])) {
 }
 
 ////////////////////////// Tester Login Auth
-if (isset($_REQUEST['testerSignIn'])) {
+if (isset($_REQUEST['signIn'])) {
     $testerEmail = $_REQUEST['testerEmail'];
     $testerPassword = $_REQUEST['testerPassword'];
     // echo $userEmail . " " . $userPassword; exit();
@@ -201,7 +201,7 @@ if (isset($_REQUEST['testerSignIn'])) {
         $error = "Enter Your Login Details";
         header("Location: ../login.php?signUp=tester&error=" . urlencode($error));
     } else {
-        $signup_tester = "SELECT * FROM signup_tester";
+        $signup_tester = "SELECT * FROM signup";
         $res = mysqli_query($conn, $signup_tester);
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {
@@ -210,11 +210,11 @@ if (isset($_REQUEST['testerSignIn'])) {
                     if ($row['TesterEmail'] == $testerEmail) {
                         if ($row['TesterPassword'] == $testerPassword) {
                             $_SESSION['testerDetails'] = [
-                                'testerCode' => $row['Code'],
-                                'testerId' => $row['TesterId'],
-                                'testerName' => $row['TesterName'],
-                                'testerEmail' => $row['TesterEmail'],
-                                'testerCNIC' => $row['TesterCNIC'],
+                                // 'testerCode' => $row['Code'],
+                                // '' => $row['TesterId'],
+                                'userName' => $row['TesterName'],
+                                // 'testerEmail' => $row['TesterEmail'],
+                                // 'testerCNIC' => $row['TesterCNIC'],
                                 'Role' => $row['Role'],
                             ];
                             $_SESSION["testerLoginStatus"] = true;
